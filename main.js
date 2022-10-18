@@ -1,1 +1,0 @@
-(()=>{const e={year:"1989",miles:"112,456",model:"Kia",color:"red"};Object.defineProperty(e,"carDetails",{get(){return`The Car's year is ${this.year}, the color is ${this.color}, and model is ${this.model}. This car has ${this.miles} miles.`},set(e){[this.year,this.miles,this.model,this.color]=e.split(" ")}}),alert(e.carDetails)})();
