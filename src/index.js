@@ -1,18 +1,21 @@
-const car = {
-    year: "1989",
-    miles: "112,456",
-    model: "Kia",
-    color: "red"
-}
+import _ from 'lodash';
+import './style.css';
+import Icon from './icon.svg';
 
-Object.defineProperty(car, "carDetails", {
-    get() {
-        return `The Car's year is ${this.year}, the color is ${this.color}, and model is ${this.model}. This car has ${this.miles} miles on it.`
-    },
+function component() {
+    const element = document.createElement('div');
+ 
+    // Lodash, now imported by this script
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    element.classList.add('hello');
 
-    set(value) {
-        [this.year, this.miles, this.model, this.color] = value.split(" ")
-    }
-});
+    // Add the image to our existing div.
+    const myIcon = new Image();
+    myIcon.src = Icon;
 
-alert(car.carDetails)
+    element.appendChild(myIcon);
+ 
+    return element;
+  }
+ 
+  document.body.appendChild(component());
