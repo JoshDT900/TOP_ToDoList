@@ -1,6 +1,18 @@
+@font-face {
+  font-family: 'Barlow', sans-serif;;
+  src: local('Barlow-Regular.ttf');
+}
+
 * {
   padding: 0px;
   margin: 0px;
+  font-family: 'Barlow', sans-serif;
+}
+
+
+
+body {
+  background-color: #FAF7F0;
 }
 
 .main_wrap {
@@ -12,6 +24,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
+  background-color: #98A8F8;
 }
 
 .head_page h1 {
@@ -31,5 +44,11 @@
 
 .profile_box .add_proj_btn {
   display: flex;
+  align-items: center;
+  overflow: hidden;
   gap: 5px;
+}
+
+.profile_box .add_proj_btn > img {
+  width: 15%;
 }
