@@ -37,45 +37,49 @@ body {
 
 .head_page .profile_box {
   display: flex;
-  width: 100%;
-  height: 100%;
   justify-content: space-around;
   align-items: center;
   grid-column: 5/6;
-  justify-self: end;
 }
 
 .profile_box .add_proj_btn {
   display: flex;
   align-items: center;
-  overflow: hidden;
   gap: 5px;
 }
 
 .profile_box .add_proj_btn > img {
-  width: 15%;
+  width: 20px;
 }
 
 .side_nav {
-  padding: 10px;
   background-color: #BCCEF8;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 4fr;
-  justify-items: center;
   align-items: center;
 }
 .side_nav .side_nav_item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.side_nav > div:hover {
+  background-color: #3838381e;
 }
 
 .side_nav .side_nav_footer {
   align-self: flex-end;
-  width: 55%;
+  border-bottom: none;
+  border-top: solid 1px black;  
 }
 
-.side_nav div {
-  width: 75%;
+.side_nav > div {
+  padding: 10px;
+}
+
+.side_nav .side_nav_footer_item {
+  justify-content: space-evenly;
 }
