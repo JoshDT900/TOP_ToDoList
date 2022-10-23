@@ -59,4 +59,22 @@ body {
 .side_nav {
   padding: 10px;
   background-color: #BCCEF8;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 4fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.side_nav .side_nav_footer {
+  align-self: flex-end;
+}
+
+.side_nav .side_nav_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side_nav div {
+  width: 85%;
 }
