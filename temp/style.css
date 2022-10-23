@@ -64,17 +64,18 @@ body {
   justify-items: center;
   align-items: center;
 }
-
-.side_nav .side_nav_footer {
-  align-self: flex-end;
-}
-
 .side_nav .side_nav_item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+}
+
+.side_nav .side_nav_footer {
+  align-self: flex-end;
+  width: 55%;
 }
 
 .side_nav div {
-  width: 85%;
+  width: 75%;
 }
