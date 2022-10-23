@@ -28,6 +28,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   align-items: center;
   background-color: #98A8F8;
+  border-bottom: solid 3px black;
 }
 
 .head_page h1 {
@@ -46,6 +47,13 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 15px;
+}
+
+.profile_box .add_proj_btn:hover {
+  background-color: #6a8de6;
+  border-radius: 50px;
+  position: inherit;
 }
 
 .profile_box .add_proj_btn > img {
@@ -55,8 +63,8 @@ body {
 .side_nav {
   background-color: #BCCEF8;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 4fr;
-  align-items: center;
+  grid-template-rows: 1fr 1fr 1fr 6fr;
+  border-right: solid 3px black;
 }
 .side_nav .side_nav_item {
   display: flex;
@@ -64,10 +72,12 @@ body {
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 10px;
+  width: -webkit-fill-available;
 }
 
 .side_nav > div:hover {
-  background-color: #3838381e;
+  background-color: #98A8F8;
+  /* color: #FAF7F0; */
 }
 
 .side_nav .side_nav_footer {
@@ -78,6 +88,10 @@ body {
 
 .side_nav > div {
   padding: 10px;
+  border-bottom: dashed;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 
 .side_nav .side_nav_footer_item {
