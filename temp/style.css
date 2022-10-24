@@ -144,8 +144,8 @@ body {
 }
 
 .todo_item .todo_edit {
-  justify-self: flex-end;
-  grid-column: 3/4;
+  justify-self: flex-start;
+  grid-column: 4/5;
   grid-row: 3/4;
 }
 
