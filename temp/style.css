@@ -72,7 +72,7 @@ body {
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 10px;
-  width: -webkit-fill-available;
+  width: 100%;
 }
 
 .side_nav > div:hover {

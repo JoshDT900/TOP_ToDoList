@@ -118,12 +118,31 @@
                         <img src="delete_FILL1_wght400_GRAD0_opsz48.svg" alt="remove task button">
                     </div>
                 </div>                
-            </div>
-            
+            </div>            
         </div>
+
         <div class="form_wrap">
             <form action="" method="post" class="add_task_form">
-
+                <div>
+                    <label for="project_name">Project Name</label>
+                    <input type="text" id="project_name" name="project_name">
+                </div>
+                <div>
+                    <label for="date_entry">Date</label>
+                    <input type="date" name="date_entry" id="date_entry">
+                </div>
+                <div>
+                    <label for="time_entry">Time</label>
+                    <input type="time" name="time_entry" id="time_entry">
+                </div>
+                <div>
+                    <label for="task_num">Number of Tasks</label>
+                    <input type="number" name="task_num" id="task_num" min="1" max="10">
+                </div>
+                <div>
+                    <label for="task_one"></label>
+                    <input type="text" name="task_one" id="task_one">
+                </div>
             </form>
         </div>
     </div>
