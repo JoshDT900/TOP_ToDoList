@@ -123,26 +123,29 @@
 
         <div class="form_wrap">
             <form action="" method="post" class="add_task_form">
-                <div>
+                <div class="proj_name_box">
                     <label for="project_name">Project Name</label>
-                    <input type="text" id="project_name" name="project_name">
+                    <input type="text" id="project_name" name="project_name" placeholder="Trash." minlength="4" maxlength="30" required>
                 </div>
-                <div>
+                <div class="date_box">
                     <label for="date_entry">Date</label>
-                    <input type="date" name="date_entry" id="date_entry">
+                    <input type="date" name="date_entry" id="date_entry" required>
                 </div>
-                <div>
+                <div class="time_box">
                     <label for="time_entry">Time</label>
-                    <input type="time" name="time_entry" id="time_entry">
+                    <input type="time" name="time_entry" id="time_entry" required>
                 </div>
-                <div>
+                <div class="task_num_box">
                     <label for="task_num">Number of Tasks</label>
-                    <input type="number" name="task_num" id="task_num" min="1" max="10">
+                    <input type="number" name="task_num" id="task_num" min="1" max="10" value="1">
                     <button type="button">Confirm</button>
                 </div>
-                <div>
+                <div class="task_box">
                     <label for="task_one">Task One</label>
-                    <input type="text" name="task_one" id="task_one">
+                    <input type="text" name="task_one" id="task_one" placeholder="Take out the trash.">
+                </div>
+                <div class="submit_box">
+                    <button type="submit">Add Task</button>
                 </div>
             </form>
         </div>
