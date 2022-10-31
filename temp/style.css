@@ -112,12 +112,14 @@ body {
   box-shadow: 5px 6px 3px 2px black;
   border-radius: 8px;
   padding: 5px 20px;
+  gap: 10px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   align-items: center;
   background-color: #CDFCF6;
   flex-basis: 50px;
+  min-width: fit-content;
 }
 
 .todo_item .todo_task {
@@ -166,13 +168,15 @@ body {
   box-shadow: 5px 6px 3px 2px black;
   border-radius: 8px;
   padding: 5px 20px;
+  gap: 10px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr 2fr 1fr;
+  /* grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 2fr 1fr; */
   justify-items: center;
   align-items: center;
   background-color: #CDFCF6;
   flex-basis: 175px;
+  min-width: fit-content;
 }
 
 .todo_item_full .todo_task {
@@ -221,6 +225,7 @@ body {
 
 .todo_item_full .todo_body ul input {
   width: 15px;
+  height: 15px;
 }
 
 .todo_btns_full div {
