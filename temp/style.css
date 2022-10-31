@@ -117,6 +117,7 @@ body {
   justify-items: center;
   align-items: center;
   background-color: #CDFCF6;
+  flex-basis: 50px;
 }
 
 .todo_item .todo_task {
@@ -135,7 +136,10 @@ body {
 
 .todo_item .todo_btns {
   display: flex;
+  flex-basis: 50px;
   justify-self: flex-end;
+  align-items: center;
+  justify-content: space-evenly;
   gap: 20px;
   grid-column: 5/6;
 }
@@ -143,6 +147,18 @@ body {
 .todo_item img,
 .todo_item_full img {
   width: 30px;
+  height: 30px;
+}
+
+.todo_item img:hover,
+.todo_item_full img:hover {
+  width: 35px;
+  height: 35px;
+}
+
+.todo_item:hover,
+.todo_item_full:hover {
+  background-color: #9ddfd6;
 }
 
 .todo_item_full {
@@ -156,6 +172,7 @@ body {
   justify-items: center;
   align-items: center;
   background-color: #CDFCF6;
+  flex-basis: 175px;
 }
 
 .todo_item_full .todo_task {
@@ -183,6 +200,7 @@ body {
   grid-column: 5/6;
   grid-row: 3/4;
   gap: 20px;
+  height: 40px;
 }
 
 .todo_item_full .todo_body {
@@ -190,17 +208,30 @@ body {
   grid-row: 2/4;
   justify-self: start;
   align-self: end;
+  padding-bottom: 10px;
 }
 
 .todo_item_full .todo_body ul {
   display: grid;
   grid-template-columns: 1fr 9fr 1fr 9fr 1fr 9fr;
   gap: 15px;
-  padding-bottom: 15px;
+  align-items: center;
 }
 
 .todo_item_full .todo_body ul input {
   width: 15px;
+}
+
+.todo_btns_full div {
+  display: flex;
+  justify-content: center;
+  width: 35px;
+}
+
+.todo_btns div {
+  display: flex;
+  justify-content: center;
+  width: 35px;
 }
 
 .form_wrap {
@@ -286,6 +317,10 @@ body {
   align-items: center;
 }
 
+.form_wrap {
+  display: none;
+}
+
 .form_box input {
   padding: 5px;
   border-style: none;
@@ -338,4 +373,3 @@ body {
   border: 2px solid black;
   width: 100%;
 }
-
