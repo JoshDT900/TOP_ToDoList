@@ -1,0 +1,381 @@
+@font-face {
+    font-family: 'Barlow', sans-serif;;
+    src: local('Barlow-Regular.ttf');
+  }
+  
+  * {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Barlow', sans-serif;
+  }
+  
+  body {
+    background-color: #FAF7F0;
+    height: 100vh;
+  }
+  
+  .main_wrap {
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr 4fr;
+    height: 100%;
+  }
+  
+  .head_page {
+    padding: 15px;
+    display: grid;
+    grid-column: 1/3;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    background-color: #98A8F8;
+    border-bottom: solid 3px black;
+  }
+  
+  .head_page h1 {
+    grid-column: 3/4;
+    text-align: center;
+  }
+  
+  .head_page .profile_box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 5/6;
+  }
+  
+  .profile_box .add_proj_btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 15px;
+  }
+  
+  .profile_box .add_proj_btn:hover {
+    background-color: #6a8de6;
+    border-radius: 50px;
+    position: inherit;
+  }
+  
+  .profile_box .add_proj_btn > img {
+    width: 20px;
+  }
+  
+  .side_nav {
+    background-color: #BCCEF8;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 5fr;
+    border-right: solid 3px black;
+  }
+  .side_nav .side_nav_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 10px;
+    width: 100%;
+  }
+  
+  .side_nav > div:hover {
+    background-color: #98A8F8;
+  }
+  
+  .side_nav .side_nav_footer {
+    align-self: flex-end;
+    border-bottom: none;
+    border-top: solid 1px black;  
+  }
+  
+  .side_nav > div {
+    padding: 10px;
+    border-bottom: dashed;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  
+  .side_nav .side_nav_footer_item {
+    justify-content: space-evenly;
+  }
+  
+  .main_content {
+    display: flex;
+    flex-direction: column;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding: 25px;
+    gap: 1rem;
+    overflow: scroll;
+  }
+  
+  .todo_item {
+    border: solid 2px black;
+    box-shadow: 5px 6px 3px 2px black;
+    border-radius: 8px;
+    padding: 5px 20px;
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    align-items: center;
+    background-color: #CDFCF6;
+    flex-basis: 50px;
+    min-width: fit-content;
+  }
+  
+  .todo_item .todo_task {
+    grid-row: 1/2;
+    justify-self: flex-start;
+    font-weight: bold;
+  }
+  
+  .todo_item .todo_time {
+    grid-column: 3/4;
+  }
+  
+  .todo_item .todo_body {
+    display: none;
+  }
+  
+  .todo_item .todo_btns {
+    display: flex;
+    flex-basis: 50px;
+    justify-self: flex-end;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    grid-column: 5/6;
+  }
+  
+  .todo_item img,
+  .todo_item_full img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .todo_item img:hover,
+  .todo_item_full img:hover {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .todo_item:hover,
+  .todo_item_full:hover {
+    background-color: #9ddfd6;
+  }
+  
+  .todo_item_full {
+    border: solid 2px black;
+    box-shadow: 5px 6px 3px 2px black;
+    border-radius: 8px;
+    padding: 5px 20px;
+    gap: 10px;
+    display: grid;
+    /* grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 2fr 1fr; */
+    justify-items: center;
+    align-items: center;
+    background-color: #CDFCF6;
+    flex-basis: 175px;
+    min-width: fit-content;
+  }
+  
+  .todo_item_full .todo_task {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    justify-self: flex-start;
+    align-self: flex-start;
+    padding-top: 10px;
+    font-weight: bold;
+  }
+  
+  .todo_item_full .todo_time {
+    grid-column: 5/6;
+    grid-row: 1/2;
+    justify-self: flex-end;
+    align-self: flex-start;
+    padding-top: 10px;
+  }
+  
+  .todo_item_full .todo_btns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-self: end;
+    justify-self: flex-end;
+    grid-column: 5/6;
+    grid-row: 3/4;
+    gap: 20px;
+    height: 50px;
+  }
+  
+  .todo_item_full .todo_body {
+    grid-column: 1/5;
+    grid-row: 2/4;
+    justify-self: start;
+    align-self: end;
+    padding-bottom: 10px;
+  }
+  
+  .todo_item_full .todo_body ul {
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr 9fr 1fr 9fr;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .todo_item_full .todo_body ul input {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .todo_btns_full div {
+    display: flex;
+    justify-content: center;
+    width: 35px;
+  }
+  
+  .todo_btns div {
+    display: flex;
+    justify-content: center;
+    width: 35px;
+  }
+  
+  .form_wrap {
+    position: absolute;
+    display: flex;
+    background-color: rgba(188, 206, 248, 0.7);
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .form_wrap .form_box {
+    margin: auto;
+  }
+  
+  .form_box .add_task_form {
+    display: grid;
+    align-items: center;
+    justify-items: start;
+    background-color: rgb(152, 168, 248);
+    gap: 15px;
+    width: 399px;
+    border: 5px solid black;
+    border-radius: 15px;
+    padding: 20px;
+  }
+  
+  .add_task_form .proj_name_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    grid-column: 1/6;
+    grid-row: 1/2;
+  }
+  
+  .add_task_form .date_box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+  
+  .add_task_form .time_box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-column: 4/6;
+    grid-row: 2/3;
+  }
+  
+  .add_task_form .task_num_box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-column: 1/2;
+    grid-row: 3/4;
+    margin-bottom: 20px;
+  }
+  
+  .task_num_box label {
+    grid-column: 1/3;
+  }
+  
+  .task_num_box button {
+    padding: 5px;
+    background-color: rgb(250, 247, 240);
+    font-weight: bold;
+    font-size: 14px;
+    border-style: none;
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 100%;
+  }
+  
+  .add_task_form .task_box {
+    display: flex;
+    width: 100%;
+    grid-column: 1/6;
+    grid-row: 4/5;
+    align-items: center;
+  }
+  
+  .form_wrap {
+    display: none;
+  }
+  
+  .form_box input {
+    padding: 5px;
+    border-style: none;
+    border: 2px solid grey;
+    outline: none;
+  }
+  
+  .form_box button:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+  }
+  
+  .form_box label {
+    font-weight: 600;
+  }
+  
+  .task_box input {
+    margin-left: auto;
+    width: 75%;
+    padding: 5px;
+  }
+  
+  .form_box input:focus:invalid {
+    border: 2px solid red;
+  }
+  
+  .form_box input:focus:valid,
+  .form_box input:valid {
+    border: 2px solid green;
+  }
+  
+  .add_task_form .submit_box {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 20px;
+    width: 100%;
+    grid-column: 1/6;
+    grid-row: 5/6;
+  }
+  
+  .submit_box button {
+    padding: 5px;
+    background-color: rgb(250, 247, 240);
+    font-weight: bold;
+    font-size: 14px;
+    border-style: none;
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 100%;
+  }
