@@ -1,5 +1,7 @@
 import './style.css';
 import HeaderImg from "/home/josh/Documents/repos/TOP_ToDoList/src/description_FILL0_wght400_GRAD0_opsz48 (1).svg"
+import ProjBtnImage from "/home/josh/Documents/repos/TOP_ToDoList/src/add_FILL0_wght400_GRAD0_opsz48.svg"
+import ProfileImage from "../src/person_FILL0_wght400_GRAD0_opsz48 (2).svg"
 
 const domGenModule = (function() {
     let body = document.querySelector("body")
@@ -28,14 +30,19 @@ const domGenModule = (function() {
                 if (typeof(argArr[2]) === 'string') {
                     newEle.textContent = argArr[2];
                 } else {
-                    return alert("The third argument must be a string");
+                    return alert("Invalid Argument Type. The third argument must be a string");
                 }
             }
+        } else if (argArr.length === 2 && typeof(argArr[1]) === "string") {
+            newEle.textContent = argArr[1];
+            return newEle; 
+        } else if (argArr.length === 1) {
+            return newEle;
         } else {
             return alert("The second argument accepts an array of arrays containing 2 strings or an array of 2 strings.");
         }
 
-        return newEle;
+        return newEle;   
     }
 
     return { makeEle, body }
@@ -64,12 +71,38 @@ let headerEleContent = () => {
     let headImg = domGenModule.makeEle("img", ["class", "nav_logo"])
     headImg.setAttribute("src", HeaderImg)
     headerEle.appendChild(headImg)
+
+    let h1Ele = domGenModule.makeEle("h1", "My To Do List")
+    headerEle.appendChild(h1Ele)
+
+    let profBoxEle = domGenModule.makeEle("div", ["class", "profile_box"])
+    headerEle.appendChild(profBoxEle);
+
+    return headerEle;
 }
 
+let profileBox = () => {
+    let profBoxEle = document.querySelector(".profile_box")
+
+    let projBtnEle = domGenModule.makeEle("div", ["class", "add_proj_btn"])
+    profBoxEle.appendChild(projBtnEle)
+
+    let projBtnDiv = domGenModule.makeEle("div", "Add a new project")
+    projBtnEle.appendChild(projBtnDiv)
+
+    let projBtnImg = domGenModule.makeEle("img", [["src", ProjBtnImage], ["alt", "add note icon"]])
+    projBtnEle.appendChild(projBtnImg)
+
+    let projBtnProfile = domGenModule.makeEle("img", [["src", ProfileImage], ["alt", "profile icon"]])
+    profBoxEle.appendChild(projBtnProfile)
+
+    return profBoxEle;
+}
 
 (function() {
     domGenMain();
     headerEleContent();
+    profileBox();
 
 })();
 
