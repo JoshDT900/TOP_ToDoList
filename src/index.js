@@ -127,12 +127,9 @@ let sideNavBox = () => {
     let pFootEle = domGenModule.makeEle("p", "Created by - David T.")
 
     aFootEle.appendChild(imgFootEle)
-
     footEleItem.appendChild(aFootEle)
     footEleItem.appendChild(pFootEle)
-
     sideFootEle.appendChild(footEleItem)
-
     sideNav.appendChild(sideFootEle)
 
     return sideNav;

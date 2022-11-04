@@ -7,5 +7,6 @@ import calendarMonthImg from "../src/calendar_month_FILL0_wght400_GRAD0_opsz48.s
 import calendarAllImg from "../src/event_note_FILL0_wght400_GRAD0_opsz48.svg"
 import gitLogoImg from "../src/GitHub-Mark-32px.png"
 
-export { headerImgFile, projBtnImageFile, profileImageFile, calendarAllImg, calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg }
+export { headerImgFile, projBtnImageFile, profileImageFile, calendarAllImg,
+         calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg }
 
