@@ -1,7 +1,6 @@
 import './style.css';
-import HeaderImg from "/home/josh/Documents/repos/TOP_ToDoList/src/description_FILL0_wght400_GRAD0_opsz48 (1).svg"
-import ProjBtnImage from "/home/josh/Documents/repos/TOP_ToDoList/src/add_FILL0_wght400_GRAD0_opsz48.svg"
-import ProfileImage from "../src/person_FILL0_wght400_GRAD0_opsz48 (2).svg"
+import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
+         calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg } from './images.js'
 
 const domGenModule = (function() {
     let body = document.querySelector("body")
@@ -65,11 +64,10 @@ let domGenMain = () => {
     return mainWrap;
 };
 
-let headerEleContent = () => {
+let headerEleBox= () => {
     let headerEle = document.querySelector(".head_page")
 
-    let headImg = domGenModule.makeEle("img", ["class", "nav_logo"])
-    headImg.setAttribute("src", HeaderImg)
+    let headImg = domGenModule.makeEle("img", [["class", "nav_logo"], ["src", headerImgFile]])
     headerEle.appendChild(headImg)
 
     let h1Ele = domGenModule.makeEle("h1", "My To Do List")
@@ -90,19 +88,61 @@ let profileBox = () => {
     let projBtnDiv = domGenModule.makeEle("div", "Add a new project")
     projBtnEle.appendChild(projBtnDiv)
 
-    let projBtnImg = domGenModule.makeEle("img", [["src", ProjBtnImage], ["alt", "add note icon"]])
+    let projBtnImg = domGenModule.makeEle("img", [["src", projBtnImageFile], ["alt", "add note icon"]])
     projBtnEle.appendChild(projBtnImg)
 
-    let projBtnProfile = domGenModule.makeEle("img", [["src", ProfileImage], ["alt", "profile icon"]])
+    let projBtnProfile = domGenModule.makeEle("img", [["src", profileImageFile], ["alt", "profile icon"]])
     profBoxEle.appendChild(projBtnProfile)
 
     return profBoxEle;
 }
 
-(function() {
+let sideNavBox = () => {
+    let sideNav = document.querySelector(".side_nav")
+
+    let navClassArr = ["today_item", "week_item", "month_item", "all_item"]
+    let navPText = ["Today's Projects", "This Week's Projects", "This Month's Projects", "All Projects"]
+    let imgArr = [calendarTodayImg, calendarWeekImg, calendarMonthImg, calendarAllImg]
+
+    for (let i in navClassArr) {
+
+        let newEle = domGenModule.makeEle("div", ["class", navClassArr[i]])
+
+        let sideNavEle = domGenModule.makeEle("div", ["class", "side_nav_item"])
+        newEle.appendChild(sideNavEle)
+
+        let pEle = domGenModule.makeEle("p", navPText[i])
+        sideNavEle.appendChild(pEle)
+
+        let imgEle = domGenModule.makeEle("img", ["src", imgArr[i]])
+        sideNavEle.appendChild(imgEle)
+
+        sideNav.appendChild(newEle)
+    }
+
+    let sideFootEle = domGenModule.makeEle("div", ["class", "side_nav_footer"])
+    let footEleItem = domGenModule.makeEle("div", ["class", "side_nav_item side_nav_footer_item"])
+    let aFootEle =  domGenModule.makeEle("a", [["href", "https://github.com/JoshDT900"], ["target", "#"]])
+    let imgFootEle = domGenModule.makeEle("img", [["src", gitLogoImg], ["alt", "GitHub logo of Mark the cat"]])
+    let pFootEle = domGenModule.makeEle("p", "Created by - David T.")
+
+    aFootEle.appendChild(imgFootEle)
+
+    footEleItem.appendChild(aFootEle)
+    footEleItem.appendChild(pFootEle)
+
+    sideFootEle.appendChild(footEleItem)
+
+    sideNav.appendChild(sideFootEle)
+
+    return sideNav;
+}
+
+(function() {    
     domGenMain();
-    headerEleContent();
+    headerEleBox();
     profileBox();
+    sideNavBox();
 
 })();
 
