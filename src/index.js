@@ -61,6 +61,14 @@ let domGenMain = () => {
     let mainConEle = domGenModule.makeEle("div", ["class", "main_content"])
     mainWrap.appendChild(mainConEle)
 
+    let formWrapEle = domGenModule.makeEle("div", ["class", "form_wrap"])
+    mainWrap.appendChild(formWrapEle)
+    // let formBoxEle = domGenModule.makeEle("div", ["class", "form_box"])
+    // let formEle = domGenModule.makeEle("form", [["class", "add_task_form"],["action", ""],["method", "post"]])
+
+    // formWrapEle.appendChild(formBoxEle)
+    // formBoxEle.appendChild(formEle)
+
     return mainWrap;
 };
 
@@ -135,11 +143,41 @@ let sideNavBox = () => {
     return sideNav;
 }
 
+let testObjArr = [{
+    project_name: "Test Project",
+    date_entry: "11/09/2022",
+    time_entry: "7:30pm",
+    task_num: 1,
+    task_1: "Take the trash out test.",
+    prio: 0
+}]
+
+let mainContBox = (arr) => {
+    let mainContEle = document.querySelector(".main_content")
+
+    for (let obj of arr) {
+        let todoItem = domGenModule.makeEle("div", ["class", "todo_item"])
+        mainContEle.appendChild(todoItem)
+        
+        let taskEle = domGenModule.makeEle("div", ["class", "todo_task"], obj.project_name)
+        todoItem.appendChild(taskEle)
+
+        let timeEle = domGenModule.makeEle("div", ["class", "todo_time"], obj.time_entry)
+        todoItem.appendChild(timeEle)
+        
+    }
+
+    
+
+    return mainContEle
+
+}
+
 (function() {    
     domGenMain();
     headerEleBox();
     profileBox();
     sideNavBox();
-
+    mainContBox(testObjArr);
 })();
 
