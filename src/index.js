@@ -1,15 +1,20 @@
 import './style.css';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
-         calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg } from './images.js'
+         calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
+         delTaskImg, completedTaskImg, editTaskImg } from './images.js'
 
 const domGenModule = (function() {
-    let body = document.querySelector("body")
+    let body = document.querySelector("body");
 
+
+    //Method for making new elements. Accepts 3 args. First accepts a string, 2nd is either an Array, Nested Array, or String, and 3rd accepts a string.
+    //2nd arg sets attributes for elements if an array or nested array, or text content if it's a string.
+    //Accepts a 3rd argument only if 2nd argument isn't an array or nested array.
     const makeEle = function() {
-        let argArr = [...arguments]
+        let argArr = [...arguments];
 
         if (typeof(argArr[0]) != 'string') {
-            return alert("First argument must be a valid HTML element in string format. Example: 'div' ")
+            return alert("First argument must be a valid HTML element in string format. Example: 'div' ");
         }
 
         let newEle = document.createElement(`${argArr[0]}`)        
@@ -44,25 +49,25 @@ const domGenModule = (function() {
         return newEle;   
     }
 
-    return { makeEle, body }
+    return { makeEle, body };
 })();
 
 let domGenMain = () => {   
 
-    let mainWrap = domGenModule.makeEle("div", ["class", "main_wrap"])
-    domGenModule.body.appendChild(mainWrap)
+    let mainWrap = domGenModule.makeEle("div", ["class", "main_wrap"]);
+    domGenModule.body.appendChild(mainWrap);
 
-    let headerEle = domGenModule.makeEle("header", ["class", "head_page"])
-    mainWrap.appendChild(headerEle)
+    let headerEle = domGenModule.makeEle("header", ["class", "head_page"]);
+    mainWrap.appendChild(headerEle);
 
-    let sideNavEle = domGenModule.makeEle("div", ["class", "side_nav"])
-    mainWrap.appendChild(sideNavEle)
+    let sideNavEle = domGenModule.makeEle("div", ["class", "side_nav"]);
+    mainWrap.appendChild(sideNavEle);
 
-    let mainConEle = domGenModule.makeEle("div", ["class", "main_content"])
-    mainWrap.appendChild(mainConEle)
+    let mainConEle = domGenModule.makeEle("div", ["class", "main_content"]);
+    mainWrap.appendChild(mainConEle);
 
-    let formWrapEle = domGenModule.makeEle("div", ["class", "form_wrap"])
-    mainWrap.appendChild(formWrapEle)
+    let formWrapEle = domGenModule.makeEle("div", ["class", "form_wrap"]);
+    mainWrap.appendChild(formWrapEle);
     // let formBoxEle = domGenModule.makeEle("div", ["class", "form_box"])
     // let formEle = domGenModule.makeEle("form", [["class", "add_task_form"],["action", ""],["method", "post"]])
 
@@ -73,72 +78,72 @@ let domGenMain = () => {
 };
 
 let headerEleBox= () => {
-    let headerEle = document.querySelector(".head_page")
+    let headerEle = document.querySelector(".head_page");
 
-    let headImg = domGenModule.makeEle("img", [["class", "nav_logo"], ["src", headerImgFile]])
-    headerEle.appendChild(headImg)
+    let headImg = domGenModule.makeEle("img", [["class", "nav_logo"], ["src", headerImgFile]]);
+    headerEle.appendChild(headImg);
 
-    let h1Ele = domGenModule.makeEle("h1", "My To Do List")
-    headerEle.appendChild(h1Ele)
+    let h1Ele = domGenModule.makeEle("h1", "My To Do List");
+    headerEle.appendChild(h1Ele);
 
-    let profBoxEle = domGenModule.makeEle("div", ["class", "profile_box"])
+    let profBoxEle = domGenModule.makeEle("div", ["class", "profile_box"]);
     headerEle.appendChild(profBoxEle);
 
     return headerEle;
 }
 
 let profileBox = () => {
-    let profBoxEle = document.querySelector(".profile_box")
+    let profBoxEle = document.querySelector(".profile_box");
 
-    let projBtnEle = domGenModule.makeEle("div", ["class", "add_proj_btn"])
-    profBoxEle.appendChild(projBtnEle)
+    let projBtnEle = domGenModule.makeEle("div", ["class", "add_proj_btn"]);
+    profBoxEle.appendChild(projBtnEle);
 
-    let projBtnDiv = domGenModule.makeEle("div", "Add a new project")
-    projBtnEle.appendChild(projBtnDiv)
+    let projBtnDiv = domGenModule.makeEle("div", "Add a new project");
+    projBtnEle.appendChild(projBtnDiv);
 
-    let projBtnImg = domGenModule.makeEle("img", [["src", projBtnImageFile], ["alt", "add note icon"]])
-    projBtnEle.appendChild(projBtnImg)
+    let projBtnImg = domGenModule.makeEle("img", [["src", projBtnImageFile], ["alt", "add note icon"]]);
+    projBtnEle.appendChild(projBtnImg);
 
-    let projBtnProfile = domGenModule.makeEle("img", [["src", profileImageFile], ["alt", "profile icon"]])
-    profBoxEle.appendChild(projBtnProfile)
+    let projBtnProfile = domGenModule.makeEle("img", [["src", profileImageFile], ["alt", "profile icon"]]);
+    profBoxEle.appendChild(projBtnProfile);
 
     return profBoxEle;
 }
 
 let sideNavBox = () => {
-    let sideNav = document.querySelector(".side_nav")
+    let sideNav = document.querySelector(".side_nav");
 
-    let navClassArr = ["today_item", "week_item", "month_item", "all_item"]
-    let navPText = ["Today's Projects", "This Week's Projects", "This Month's Projects", "All Projects"]
-    let imgArr = [calendarTodayImg, calendarWeekImg, calendarMonthImg, calendarAllImg]
+    let navClassArr = ["today_item", "week_item", "month_item", "all_item"];
+    let navPText = ["Today's Projects", "This Week's Projects", "This Month's Projects", "All Projects"];
+    let imgArr = [calendarTodayImg, calendarWeekImg, calendarMonthImg, calendarAllImg];
 
     for (let i in navClassArr) {
 
-        let newEle = domGenModule.makeEle("div", ["class", navClassArr[i]])
+        let newEle = domGenModule.makeEle("div", ["class", navClassArr[i]]);
 
-        let sideNavEle = domGenModule.makeEle("div", ["class", "side_nav_item"])
-        newEle.appendChild(sideNavEle)
+        let sideNavEle = domGenModule.makeEle("div", ["class", "side_nav_item"]);
+        newEle.appendChild(sideNavEle);
 
-        let pEle = domGenModule.makeEle("p", navPText[i])
-        sideNavEle.appendChild(pEle)
+        let pEle = domGenModule.makeEle("p", navPText[i]);
+        sideNavEle.appendChild(pEle);
 
-        let imgEle = domGenModule.makeEle("img", ["src", imgArr[i]])
-        sideNavEle.appendChild(imgEle)
+        let imgEle = domGenModule.makeEle("img", ["src", imgArr[i]]);
+        sideNavEle.appendChild(imgEle);
 
-        sideNav.appendChild(newEle)
+        sideNav.appendChild(newEle);
     }
 
-    let sideFootEle = domGenModule.makeEle("div", ["class", "side_nav_footer"])
-    let footEleItem = domGenModule.makeEle("div", ["class", "side_nav_item side_nav_footer_item"])
-    let aFootEle =  domGenModule.makeEle("a", [["href", "https://github.com/JoshDT900"], ["target", "#"]])
-    let imgFootEle = domGenModule.makeEle("img", [["src", gitLogoImg], ["alt", "GitHub logo of Mark the cat"]])
-    let pFootEle = domGenModule.makeEle("p", "Created by - David T.")
+    let sideFootEle = domGenModule.makeEle("div", ["class", "side_nav_footer"]);
+    let footEleItem = domGenModule.makeEle("div", ["class", "side_nav_item side_nav_footer_item"]);
+    let aFootEle =  domGenModule.makeEle("a", [["href", "https://github.com/JoshDT900"], ["target", "#"]]);
+    let imgFootEle = domGenModule.makeEle("img", [["src", gitLogoImg], ["alt", "GitHub logo of Mark the cat"]]);
+    let pFootEle = domGenModule.makeEle("p", "Created by - David T.");
 
-    aFootEle.appendChild(imgFootEle)
-    footEleItem.appendChild(aFootEle)
-    footEleItem.appendChild(pFootEle)
-    sideFootEle.appendChild(footEleItem)
-    sideNav.appendChild(sideFootEle)
+    aFootEle.appendChild(imgFootEle);
+    footEleItem.appendChild(aFootEle);
+    footEleItem.appendChild(pFootEle);
+    sideFootEle.appendChild(footEleItem);
+    sideNav.appendChild(sideFootEle);
 
     return sideNav;
 }
@@ -147,30 +152,71 @@ let testObjArr = [{
     project_name: "Test Project",
     date_entry: "11/09/2022",
     time_entry: "7:30pm",
-    task_num: 1,
-    task_1: "Take the trash out test.",
+    task_num: 2,
+    tasks: {
+        0: "Take the trash out test",
+        1: "Cum"
+    },
     prio: 0
 }]
 
 let mainContBox = (arr) => {
-    let mainContEle = document.querySelector(".main_content")
+    let mainContEle = document.querySelector(".main_content");
 
     for (let obj of arr) {
-        let todoItem = domGenModule.makeEle("div", ["class", "todo_item"])
-        mainContEle.appendChild(todoItem)
+        let todoItem = domGenModule.makeEle("div", ["class", "todo_item"]);
+        mainContEle.appendChild(todoItem);
+
+        //Placeholder event changer
+        let switchClass = (t) => {
+            if (t.srcElement.classList[0] === "todo_item"){
+                t.srcElement.classList.remove("todo_item")
+                t.srcElement.classList.add("todo_item_full")
+            } else if (t.srcElement.classList[0] === "todo_item_full") {
+                t.srcElement.classList.remove("todo_item_full")
+                t.srcElement.classList.add("todo_item")
+            }
+        }
+
+        todoItem.addEventListener("click", switchClass)
         
-        let taskEle = domGenModule.makeEle("div", ["class", "todo_task"], obj.project_name)
-        todoItem.appendChild(taskEle)
+        let taskEle = domGenModule.makeEle("div", ["class", "todo_task"], obj.project_name);
+        todoItem.appendChild(taskEle);
 
-        let timeEle = domGenModule.makeEle("div", ["class", "todo_time"], obj.time_entry)
-        todoItem.appendChild(timeEle)
+        let todoBody = domGenModule.makeEle("div", ["class", "todo_body"]);
+        let todoBodyList = domGenModule.makeEle("ul");
+
+        for (let j = 0; j < obj.task_num; j++){                   
+            let taskInputEle = domGenModule.makeEle("input", [["type", "checkbox"], ["name", `task_${j}`], ["id", `task_id_${j}`]]);
+            let taskLabelEle =  domGenModule.makeEle("label", ["for", `task_${j}`], obj.tasks[j]);
+
+            todoBodyList.appendChild(taskInputEle);
+            todoBodyList.appendChild(taskLabelEle);
+        }
+
+        todoBody.appendChild(todoBodyList);
+        todoItem.appendChild(todoBody);
+
+        let timeEle = domGenModule.makeEle("div", ["class", "todo_time"], obj.time_entry);
+        todoItem.appendChild(timeEle);
+
+        let taskBtnBoxEle = domGenModule.makeEle("div", ["class", "todo_btns"]);
+        todoItem.appendChild(taskBtnBoxEle);
+
+        let btnImgArr = [completedTaskImg, editTaskImg, delTaskImg];
+        let btnImgAlt = ["task done button", "edit task button", "remove task button"];
+        let btnClassArr = ["todo_completed", "todo_edit", "todo_delete"];
+        for (let i = 0; i < btnImgArr.length; i++) {
+            let newBtn = domGenModule.makeEle("div", ["class", btnClassArr[i]]);
+            let btnImgEle = domGenModule.makeEle("img", [["src", btnImgArr[i]], ["alt", btnImgAlt[i]]]);
+
+            newBtn.appendChild(btnImgEle);
+            taskBtnBoxEle.appendChild(newBtn);
+        };
         
-    }
+    }    
 
-    
-
-    return mainContEle
-
+    return mainContEle;
 }
 
 (function() {    

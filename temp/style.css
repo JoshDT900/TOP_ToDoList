@@ -379,3 +379,7 @@ body {
   border: 2px solid black;
   width: 100%;
 }
+
+.todo_item_full.linear {
+  animation: grow 1s linear infinite;
+}
