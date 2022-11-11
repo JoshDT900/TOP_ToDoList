@@ -8,9 +8,10 @@ import calendarAllImg from "../src/event_note_FILL0_wght400_GRAD0_opsz48.svg"
 import gitLogoImg from "../src/GitHub-Mark-32px.png"
 import delTaskImg from "../src/delete_FILL1_wght400_GRAD0_opsz48.svg"
 import completedTaskImg from "../src/check_circle_FILL0_wght400_GRAD0_opsz48.svg"
+import completedTaskImgFilled from "../src/check_circle_FILL1_wght400_GRAD0_opsz48.svg"
 import editTaskImg from "../src/edit_note_FILL0_wght400_GRAD0_opsz48.svg"
 
 export { headerImgFile, projBtnImageFile, profileImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
-        delTaskImg, completedTaskImg, editTaskImg }
+        delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled }
 

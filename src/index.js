@@ -1,7 +1,8 @@
 import './style.css';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
-         delTaskImg, completedTaskImg, editTaskImg } from './images.js'
+         delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
+
 
 const domGenModule = (function() {
     let body = document.querySelector("body");
@@ -67,12 +68,7 @@ let domGenMain = () => {
     mainWrap.appendChild(mainConEle);
 
     let formWrapEle = domGenModule.makeEle("div", ["class", "form_wrap"]);
-    mainWrap.appendChild(formWrapEle);
-    // let formBoxEle = domGenModule.makeEle("div", ["class", "form_box"])
-    // let formEle = domGenModule.makeEle("form", [["class", "add_task_form"],["action", ""],["method", "post"]])
-
-    // formWrapEle.appendChild(formBoxEle)
-    // formBoxEle.appendChild(formEle)
+    mainWrap.appendChild(formWrapEle);    
 
     return mainWrap;
 };
@@ -148,6 +144,42 @@ let sideNavBox = () => {
     return sideNav;
 }
 
+let formBox = () => {
+    let formWrap = document.querySelector(".form_wrap")
+
+    let formBoxEle = domGenModule.makeEle("div", ["class", "form_box"])
+    let formEle = domGenModule.makeEle("form", [["class", "add_task_form"],["action", " "],["method", "post"]])    
+    
+    let formEleClassArr = ["proj_name_box", "date_box", "time_box", "task_num_box", "task_box", "submit_box"]
+
+    for (let i = 0; i < formEleClassArr.length; i++) {
+        let newEle = domGenModule.makeEle("div", ["class", formEleClassArr[i]])
+        
+
+        if (formEleClassArr[i] === "proj_name_box"){
+            let labelEle = domGenModule.makeEle("label", ["for", "project_name"], "Project Name")
+            let inpEle = domGenModule.makeEle("input", [["type", "text"], ["id", "project_name"], ["name", "project_name"],
+             ["placeholder", "My New Project"], ["minlength", "4"], ["maxlength", "30"],["required", ""]]);
+
+            newEle.appendChild(labelEle);
+            newEle.appendChild(inpEle);
+                                                        
+        } else if (formEleClassArr[i] === "date_box") {
+            let labelEle = domGenModule.makeEle("label", ["for", "date_entry"], "Date")
+            let inpEle = domGenModule.makeEle("input", [["type", "date"], ["name", "date_entry"], ["id", "date_entry"], ["required", ""]])
+
+            newEle.appendChild(labelEle)
+            newEle.appendChild(inpEle)
+        }
+        
+        formEle.appendChild(newEle)
+    }
+
+    formBoxEle.appendChild(formEle)
+    formWrap.appendChild(formBoxEle)
+    return;
+}
+
 let testObjArr = [{
     project_name: "Test Project",
     date_entry: "11/09/2022",
@@ -158,8 +190,22 @@ let testObjArr = [{
         1: "Cum"
     },
     prio: 0
-}]
+},
+{
+    project_name: "Test Project",
+    date_entry: "11/09/2022",
+    time_entry: "7:30pm",
+    task_num: 2,
+    tasks: {
+        0: "Take the trash out test",
+        1: "Cum"
+    },
+    prio: 0
+}
+]
 
+
+//Generates DOM tasks from an array of Objects.
 let mainContBox = (arr) => {
     let mainContEle = document.querySelector(".main_content");
 
@@ -179,6 +225,7 @@ let mainContBox = (arr) => {
         }
 
         todoItem.addEventListener("click", switchClass)
+
         
         let taskEle = domGenModule.makeEle("div", ["class", "todo_task"], obj.project_name);
         todoItem.appendChild(taskEle);
@@ -208,7 +255,20 @@ let mainContBox = (arr) => {
         let btnClassArr = ["todo_completed", "todo_edit", "todo_delete"];
         for (let i = 0; i < btnImgArr.length; i++) {
             let newBtn = domGenModule.makeEle("div", ["class", btnClassArr[i]]);
-            let btnImgEle = domGenModule.makeEle("img", [["src", btnImgArr[i]], ["alt", btnImgAlt[i]]]);
+            let btnImgEle = domGenModule.makeEle("img", [["src", btnImgArr[i]], ["alt", btnImgAlt[i]], ["class", `task_image${i}`]]);
+
+            //Placeholder event listener
+            let swapImgFun = function (e) {
+                let tarEle = e.srcElement;
+                
+                if (tarEle.src === completedTaskImg) {
+                    tarEle.src = completedTaskImgFilled;
+                } else if (tarEle.src === completedTaskImgFilled) {
+                    tarEle.src = completedTaskImg;
+                }
+            }
+
+            btnImgEle.addEventListener("click", swapImgFun)
 
             newBtn.appendChild(btnImgEle);
             taskBtnBoxEle.appendChild(newBtn);
@@ -224,6 +284,7 @@ let mainContBox = (arr) => {
     headerEleBox();
     profileBox();
     sideNavBox();
+    formBox();
     mainContBox(testObjArr);
 })();
 
