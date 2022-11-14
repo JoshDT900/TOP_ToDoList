@@ -157,7 +157,7 @@ let formBox = () => {
         
 
         if (formEleClassArr[i] === "proj_name_box"){
-            let labelEle = domGenModule.makeEle("label", ["for", "project_name"], "Project Name")
+            let labelEle = domGenModule.makeEle("label", ["for", "project_name"], "Project Name *")
             let inpEle = domGenModule.makeEle("input", [["type", "text"], ["id", "project_name"], ["name", "project_name"],
              ["placeholder", "My New Project"], ["minlength", "4"], ["maxlength", "30"],["required", ""]]);
 
@@ -165,11 +165,31 @@ let formBox = () => {
             newEle.appendChild(inpEle);
                                                         
         } else if (formEleClassArr[i] === "date_box") {
-            let labelEle = domGenModule.makeEle("label", ["for", "date_entry"], "Date")
+            let labelEle = domGenModule.makeEle("label", ["for", "date_entry"], "Date *")
             let inpEle = domGenModule.makeEle("input", [["type", "date"], ["name", "date_entry"], ["id", "date_entry"], ["required", ""]])
 
             newEle.appendChild(labelEle)
             newEle.appendChild(inpEle)
+        } else if (formEleClassArr[i] === "time_box") {
+            let labelEle = domGenModule.makeEle("label", ["for", "time_entry"], "Time *")
+            let inpEle = domGenModule.makeEle("input", [["type", "time"], ["name", "time_entry"], ["id", "time_entry"], ["required", ""]])
+
+            newEle.appendChild(labelEle)
+            newEle.appendChild(inpEle)
+        } else if (formEleClassArr[i] === "task_num_box") {
+            let labelEle = domGenModule.makeEle("label", ["for", "task_num"], "Number of tasks *")
+            let inpEle = domGenModule.makeEle("input", [["type", "number"], ["name", "task_num"], ["id", "task_num"], ["min", "1"], ["max", "10"], ["value", "1"]])
+            let btnEle = domGenModule.makeEle("button", ["type", "button"], "Confirm")
+
+            newEle.appendChild(labelEle)
+            newEle.appendChild(inpEle)
+            newEle.appendChild(btnEle)
+        } else if (formEleClassArr[i] === "submit_box") {
+            let subBtnEle = domGenModule.makeEle("button", ["type", "submit"], "Add Project")
+            let cancelBtnEle = domGenModule.makeEle("button", ["type", "button"], "Cancel")
+
+            newEle.appendChild(subBtnEle)
+            newEle.appendChild(cancelBtnEle)
         }
         
         formEle.appendChild(newEle)
@@ -177,7 +197,8 @@ let formBox = () => {
 
     formBoxEle.appendChild(formEle)
     formWrap.appendChild(formBoxEle)
-    return;
+
+    return formBoxEle;
 }
 
 let testObjArr = [{
@@ -200,7 +221,7 @@ let testObjArr = [{
         0: "Take the trash out test",
         1: "Cum"
     },
-    prio: 0
+    prio: 1
 }
 ]
 
@@ -213,7 +234,7 @@ let mainContBox = (arr) => {
         let todoItem = domGenModule.makeEle("div", ["class", "todo_item"]);
         mainContEle.appendChild(todoItem);
 
-        //Placeholder event changer
+        //Placeholder event listener
         let switchClass = (t) => {
             if (t.srcElement.classList[0] === "todo_item"){
                 t.srcElement.classList.remove("todo_item")
