@@ -1,4 +1,5 @@
 import './style.css';
+import { formController, swapImg } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -188,6 +189,7 @@ let formBox = () => {
             let subBtnEle = domGenModule.makeEle("button", ["type", "submit"], "Add Project")
             let cancelBtnEle = domGenModule.makeEle("button", ["type", "button"], "Cancel")
 
+
             newEle.appendChild(subBtnEle)
             newEle.appendChild(cancelBtnEle)
         }
@@ -278,18 +280,7 @@ let mainContBox = (arr) => {
             let newBtn = domGenModule.makeEle("div", ["class", btnClassArr[i]]);
             let btnImgEle = domGenModule.makeEle("img", [["src", btnImgArr[i]], ["alt", btnImgAlt[i]], ["class", `task_image${i}`]]);
 
-            //Placeholder event listener
-            let swapImgFun = function (e) {
-                let tarEle = e.srcElement;
-                
-                if (tarEle.src === completedTaskImg) {
-                    tarEle.src = completedTaskImgFilled;
-                } else if (tarEle.src === completedTaskImgFilled) {
-                    tarEle.src = completedTaskImg;
-                }
-            }
-
-            btnImgEle.addEventListener("click", swapImgFun)
+            swapImg(btnImgEle, completedTaskImg, completedTaskImgFilled)
 
             newBtn.appendChild(btnImgEle);
             taskBtnBoxEle.appendChild(newBtn);
@@ -307,5 +298,7 @@ let mainContBox = (arr) => {
     sideNavBox();
     formBox();
     mainContBox(testObjArr);
+
+    formController();
 })();
 

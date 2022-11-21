@@ -5,6 +5,7 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
+    pagecontrol: './src/pagecontrol.js',
   },
   devtool: 'inline-source-map',
   devServer: {
