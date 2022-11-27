@@ -1,6 +1,7 @@
 
 let formController = () => {
     let form = document.querySelector(".add_task_form")
+
     //Temp Event Listener to prevent refresh and preserve object data
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -13,7 +14,28 @@ let formController = () => {
 
             console.log(key, val)
         }
+        
+        formHide();
+        formRemove();
     });
+}
+
+let formShow = () => {
+    let formDisplay = document.querySelector(".form_wrap")
+
+    formDisplay.style.display = "flex"    
+}
+
+let formHide = () => {
+    let formDisplay = document.querySelector(".form_wrap")
+
+    formDisplay.style.display = "none"  
+}
+
+let formRemove = () => {
+    let form = document.querySelector(".form_box")
+
+    form.remove()
 }
 
 let swapImg = (element, imgOne, imgTwo) => {
@@ -30,4 +52,18 @@ let swapImg = (element, imgOne, imgTwo) => {
     element.addEventListener("click", swapImgFun)
 }
 
-export { formController, swapImg }
+let switchClass = (element, classA, classB) => {
+    let switchClass = (t) => {
+        if (t.srcElement.classList[0] === classA){
+            t.srcElement.classList.remove(classA)
+            t.srcElement.classList.add(classB)
+        } else if (t.srcElement.classList[0] === classB) {
+            t.srcElement.classList.remove(classB)
+            t.srcElement.classList.add(classA)
+        }
+    }
+
+    element.addEventListener("click", switchClass)
+}
+
+export { formController, swapImg, switchClass, formShow, formHide }

@@ -1,5 +1,5 @@
 import './style.css';
-import { formController, swapImg } from './pagecontrol.js';
+import { formController, swapImg, switchClass, formShow, formHide} from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -7,7 +7,6 @@ import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
 
 const domGenModule = (function() {
     let body = document.querySelector("body");
-
 
     //Method for making new elements. Accepts 3 args. First accepts a string, 2nd is either an Array, Nested Array, or String, and 3rd accepts a string.
     //2nd arg sets attributes for elements if an array or nested array, or text content if it's a string.
@@ -54,8 +53,7 @@ const domGenModule = (function() {
     return { makeEle, body };
 })();
 
-let domGenMain = () => {   
-
+let domGenMain = () => {
     let mainWrap = domGenModule.makeEle("div", ["class", "main_wrap"]);
     domGenModule.body.appendChild(mainWrap);
 
@@ -97,6 +95,9 @@ let profileBox = () => {
 
     let projBtnDiv = domGenModule.makeEle("div", "Add a new project");
     projBtnEle.appendChild(projBtnDiv);
+    
+    projBtnEle.addEventListener("click", formShow)
+    projBtnEle.addEventListener("click", formBox)
 
     let projBtnImg = domGenModule.makeEle("img", [["src", projBtnImageFile], ["alt", "add note icon"]]);
     projBtnEle.appendChild(projBtnImg);
@@ -189,6 +190,7 @@ let formBox = () => {
             let subBtnEle = domGenModule.makeEle("button", ["type", "submit"], "Add Project")
             let cancelBtnEle = domGenModule.makeEle("button", ["type", "button"], "Cancel")
 
+            subBtnEle.addEventListener("click", formController)
 
             newEle.appendChild(subBtnEle)
             newEle.appendChild(cancelBtnEle)
@@ -210,7 +212,7 @@ let testObjArr = [{
     task_num: 2,
     tasks: {
         0: "Take the trash out test",
-        1: "Cum"
+        1: "Brush Teeth"
     },
     prio: 0
 },
@@ -221,7 +223,7 @@ let testObjArr = [{
     task_num: 2,
     tasks: {
         0: "Take the trash out test",
-        1: "Cum"
+        1: "Brush Teeth"
     },
     prio: 1
 }
@@ -236,19 +238,7 @@ let mainContBox = (arr) => {
         let todoItem = domGenModule.makeEle("div", ["class", "todo_item"]);
         mainContEle.appendChild(todoItem);
 
-        //Placeholder event listener
-        let switchClass = (t) => {
-            if (t.srcElement.classList[0] === "todo_item"){
-                t.srcElement.classList.remove("todo_item")
-                t.srcElement.classList.add("todo_item_full")
-            } else if (t.srcElement.classList[0] === "todo_item_full") {
-                t.srcElement.classList.remove("todo_item_full")
-                t.srcElement.classList.add("todo_item")
-            }
-        }
-
-        todoItem.addEventListener("click", switchClass)
-
+        switchClass(todoItem, "todo_item", "todo_item_full")
         
         let taskEle = domGenModule.makeEle("div", ["class", "todo_task"], obj.project_name);
         todoItem.appendChild(taskEle);
@@ -296,9 +286,7 @@ let mainContBox = (arr) => {
     headerEleBox();
     profileBox();
     sideNavBox();
-    formBox();
     mainContBox(testObjArr);
 
-    formController();
 })();
 

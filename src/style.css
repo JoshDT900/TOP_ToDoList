@@ -324,7 +324,7 @@
   }
   
   .form_wrap {
-    /* display: none; */
+    display: none;
   }
   
   .form_box input {
