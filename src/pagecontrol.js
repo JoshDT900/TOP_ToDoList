@@ -66,4 +66,4 @@ let switchClass = (element, classA, classB) => {
     element.addEventListener("click", switchClass)
 }
 
-export { formController, swapImg, switchClass, formShow, formHide }
+export { formController, swapImg, switchClass, formShow, formHide, formRemove }

@@ -1,5 +1,5 @@
 import './style.css';
-import { formController, swapImg, switchClass, formShow, formHide} from './pagecontrol.js';
+import { formController, swapImg, switchClass, formShow, formHide, formRemove } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -191,6 +191,10 @@ let formBox = () => {
             let cancelBtnEle = domGenModule.makeEle("button", ["type", "button"], "Cancel")
 
             subBtnEle.addEventListener("click", formController)
+            cancelBtnEle.addEventListener("click", () => {
+                formHide()
+                formRemove()
+            })
 
             newEle.appendChild(subBtnEle)
             newEle.appendChild(cancelBtnEle)
