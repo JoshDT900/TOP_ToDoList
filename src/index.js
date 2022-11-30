@@ -1,5 +1,5 @@
 import './style.css';
-import { formController, swapImg, switchClass, formShow, formHide, formRemove } from './pagecontrol.js';
+import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -183,6 +183,8 @@ let formBox = () => {
             let inpEle = domGenModule.makeEle("input", [["type", "number"], ["name", "task_num"], ["id", "task_num"], ["min", "1"], ["max", "10"], ["value", "1"]])
             let btnEle = domGenModule.makeEle("button", ["type", "button"], "Confirm")
 
+            btnEle.addEventListener("click", taskNum)
+
             newEle.appendChild(labelEle)
             newEle.appendChild(inpEle)
             newEle.appendChild(btnEle)
@@ -291,6 +293,8 @@ let mainContBox = (arr) => {
     profileBox();
     sideNavBox();
     mainContBox(testObjArr);
-
 })();
+
+
+export { domGenModule }
 

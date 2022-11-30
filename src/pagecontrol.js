@@ -1,8 +1,35 @@
+import { domGenModule } from "./index.js";
+
+const taskFactory = () => {
+    
+    return {}
+}
+
+const testObj = taskFactory({test: "works"})
+
+console.log(testObj);
+
+let taskNum = () => {
+    let taskBox = document.querySelector(".task_box")
+    let valueEle = document.querySelector("#task_num")
+
+    let taskNum = valueEle.value
+    taskBox.textContent = "";
+
+    for (let i = 0; i < taskNum; i++){
+        let newTaskLabel = domGenModule.makeEle("label", `Task ${i + 1}`)
+        let newTaskInput = domGenModule.makeEle("input", [["type", "text"], ["name", `task_${i + 1}`], ["id", `task_${i + 1}`], ["required", ""]])
+
+        taskBox.appendChild(newTaskLabel)
+        taskBox.appendChild(newTaskInput)
+    }
+
+    return;
+}
 
 let formController = () => {
     let form = document.querySelector(".add_task_form")
 
-    //Temp Event Listener to prevent refresh and preserve object data
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -66,4 +93,5 @@ let switchClass = (element, classA, classB) => {
     element.addEventListener("click", switchClass)
 }
 
-export { formController, swapImg, switchClass, formShow, formHide, formRemove }
+
+export { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum }

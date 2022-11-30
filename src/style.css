@@ -316,7 +316,9 @@
   }
   
   .add_task_form .task_box {
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 10px;
     width: 100%;
     grid-column: 1/6;
     grid-row: 4/5;
