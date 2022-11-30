@@ -200,6 +200,12 @@ let formBox = () => {
 
             newEle.appendChild(subBtnEle)
             newEle.appendChild(cancelBtnEle)
+        } else if (formEleClassArr[i] === "task_box") {
+            let newTaskLabel = domGenModule.makeEle("label", `Task 1`)
+            let newTaskInput = domGenModule.makeEle("input", [["type", "text"], ["name", `task_1`], ["id", `task_1`], ["required", ""]])
+
+            newEle.appendChild(newTaskLabel)
+            newEle.appendChild(newTaskInput)
         }
         
         formEle.appendChild(newEle)
@@ -292,6 +298,7 @@ let mainContBox = (arr) => {
     headerEleBox();
     profileBox();
     sideNavBox();
+
     mainContBox(testObjArr);
 })();
 
