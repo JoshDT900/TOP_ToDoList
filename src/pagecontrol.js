@@ -1,13 +1,18 @@
-import { domGenModule } from "./index.js";
+import { domGenModule, testObjArr } from "./index.js";
 
-const taskFactory = () => {
-    
-    return {}
+const taskFactory = (formData) => {
+    let project_name = formData.project_name.value;
+    let date_entry = formData.date_entry.value;
+    let time_entry = formData.time_entry.value;
+    let task_num = formData.task_num.value;
+    let tasks = {}
+
+    for (let i = 0; i < task_num; i++) {
+        tasks[i] = formData[`task_${i + 1}`].value;
+    }
+
+    return { project_name, date_entry, time_entry, task_num, tasks }
 }
-
-const testObj = taskFactory({test: "works"})
-
-console.log(testObj);
 
 let taskNum = () => {
     let taskBox = document.querySelector(".task_box")
@@ -33,14 +38,11 @@ let formController = () => {
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        var formData = new FormData(form);
+        let newObj = taskFactory(form);
 
-        for (var p of formData) {
-            let key = p[0];
-            let val = p[1];
+        testObjArr.push(newObj)
 
-            console.log(key, val)
-        }
+        console.log(testObjArr);
         
         formHide();
         formRemove();

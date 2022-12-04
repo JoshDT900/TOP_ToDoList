@@ -303,5 +303,5 @@ let mainContBox = (arr) => {
 })();
 
 
-export { domGenModule }
+export { domGenModule, testObjArr }
 
