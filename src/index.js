@@ -226,7 +226,8 @@ let testObjArr = [{
         0: "Take the trash out test",
         1: "Brush Teeth"
     },
-    prio: 0
+    prio: 0,
+    id: 0
 },
 {
     project_name: "Test Project",
@@ -237,7 +238,8 @@ let testObjArr = [{
         0: "Take the trash out test",
         1: "Brush Teeth"
     },
-    prio: 1
+    prio: 0,
+    id: 1
 }
 ]
 
@@ -303,5 +305,5 @@ let mainContBox = (arr) => {
 })();
 
 
-export { domGenModule, testObjArr }
+export { domGenModule, testObjArr, mainContBox }
 
