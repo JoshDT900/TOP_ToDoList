@@ -1,5 +1,5 @@
 import './style.css';
-import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum } from './pagecontrol.js';
+import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, testObjArr } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -217,44 +217,17 @@ let formBox = () => {
     return formBoxEle;
 }
 
-let testObjArr = [{
-    project_name: "Test Project",
-    date_entry: "11/09/2022",
-    time_entry: "7:30pm",
-    task_num: 2,
-    tasks: {
-        0: "Take the trash out test",
-        1: "Brush Teeth"
-    },
-    prio: 0,
-    id: 0
-},
-{
-    project_name: "Test Project",
-    date_entry: "11/09/2022",
-    time_entry: "7:30pm",
-    task_num: 2,
-    tasks: {
-        0: "Take the trash out test",
-        1: "Brush Teeth"
-    },
-    prio: 0,
-    id: 1
-}
-]
-
-
 //Generates DOM tasks from an array of Objects.
 let mainContBox = (arr) => {
     let mainContEle = document.querySelector(".main_content");
 
     for (let obj of arr) {
-        let todoItem = domGenModule.makeEle("div", ["class", "todo_item"]);
+        let todoItem = domGenModule.makeEle("div", [["class", "todo_item"], ["id", `${obj.id}`]]);
         mainContEle.appendChild(todoItem);
 
         switchClass(todoItem, "todo_item", "todo_item_full")
         
-        let taskEle = domGenModule.makeEle("div", ["class", "todo_task"], obj.project_name);
+        let taskEle = domGenModule.makeEle("div", [["class", "todo_task"]], obj.project_name);
         todoItem.appendChild(taskEle);
 
         let todoBody = domGenModule.makeEle("div", ["class", "todo_body"]);
@@ -283,6 +256,10 @@ let mainContBox = (arr) => {
         for (let i = 0; i < btnImgArr.length; i++) {
             let newBtn = domGenModule.makeEle("div", ["class", btnClassArr[i]]);
             let btnImgEle = domGenModule.makeEle("img", [["src", btnImgArr[i]], ["alt", btnImgAlt[i]], ["class", `task_image${i}`]]);
+
+            if (btnClassArr[i] === "todo_delete") {
+                taskControl(newBtn)
+            }
 
             swapImg(btnImgEle, completedTaskImg, completedTaskImgFilled)
 

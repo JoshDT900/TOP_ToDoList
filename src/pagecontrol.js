@@ -1,4 +1,30 @@
-import { domGenModule, testObjArr, mainContBox } from "./index.js";
+import { domGenModule, mainContBox } from "./index.js";
+
+let testObjArr = [{
+    project_name: "Test Project",
+    date_entry: "11/09/2022",
+    time_entry: "7:30pm",
+    task_num: 2,
+    tasks: {
+        0: "Take the trash out test",
+        1: "Brush Teeth"
+    },
+    prio: 0,
+    id: 0
+},
+{
+    project_name: "Test Project",
+    date_entry: "11/09/2022",
+    time_entry: "7:30pm",
+    task_num: 2,
+    tasks: {
+        0: "Take the trash out test",
+        1: "Brush Teeth"
+    },
+    prio: 0,
+    id: 1
+}
+]
 
 const taskFactory = (formData) => {
     let project_name = formData.project_name.value;
@@ -50,6 +76,16 @@ let formController = () => {
     });
 }
 
+let taskControl = (taskEle) => {
+    taskEle.addEventListener("click", (event) => {
+        let mainElement = event.target.parentElement.parentElement.parentElement
+        removeTaskObj(mainElement.id);
+        console.log(testObjArr);
+        mainElement.remove()
+        
+    })
+}
+
 let newDomTask = (obj) => {
     let newObj = taskFactory(obj);
 
@@ -73,6 +109,10 @@ let formRemove = () => {
     let form = document.querySelector(".form_box");
 
     form.remove();
+}
+
+let removeTaskObj = (eleId) => {    
+    return testObjArr = testObjArr.filter(test => test.id != eleId)   
 }
 
 let swapImg = (element, imgOne, imgTwo) => {
@@ -104,4 +144,4 @@ let switchClass = (element, classA, classB) => {
 }
 
 
-export { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum };
+export { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, testObjArr };
