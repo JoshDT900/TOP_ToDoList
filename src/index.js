@@ -116,7 +116,6 @@ let sideNavBox = () => {
     let imgArr = [calendarTodayImg, calendarWeekImg, calendarMonthImg, calendarAllImg];
 
     for (let i in navClassArr) {
-
         let newEle = domGenModule.makeEle("div", ["class", navClassArr[i]]);
 
         let sideNavEle = domGenModule.makeEle("div", ["class", "side_nav_item"]);

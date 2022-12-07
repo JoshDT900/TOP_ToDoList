@@ -4,7 +4,7 @@ let testObjArr = [{
     project_name: "Test Project",
     date_entry: "11/09/2022",
     time_entry: "7:30pm",
-    task_num: 2,
+    task_num: "2",
     tasks: {
         0: "Take the trash out test",
         1: "Brush Teeth"
@@ -16,7 +16,7 @@ let testObjArr = [{
     project_name: "Test Project",
     date_entry: "11/09/2022",
     time_entry: "7:30pm",
-    task_num: 2,
+    task_num: "2",
     tasks: {
         0: "Take the trash out test",
         1: "Brush Teeth"
@@ -33,13 +33,9 @@ const taskFactory = (formData) => {
     let task_num = formData.task_num.value;
     let tasks = {};
     let prio = 0;    
-    
-    let lastObj = testObjArr.slice(-1);
-    let id = lastObj[0].id + 1;
+    let id = idGen(testObjArr)
 
-    for (let i = 0; i < task_num; i++) {
-        tasks[i] = formData[`task_${i + 1}`].value;
-    }
+    taskArr(task_num, tasks, formData)
 
     return { project_name, date_entry, time_entry, task_num, tasks, prio, id }
 }
@@ -63,27 +59,44 @@ let taskNum = () => {
 }
 
 let formController = () => {
-    let form = document.querySelector(".add_task_form")
+    let form = document.querySelector(".add_task_form");
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
         newDomTask(form);
-        console.log(testObjArr);
         
         formHide();
         formRemove();
     });
+
+    return;
 }
 
 let taskControl = (taskEle) => {
     taskEle.addEventListener("click", (event) => {
-        let mainElement = event.target.parentElement.parentElement.parentElement
+        let mainElement = event.target.parentElement.parentElement.parentElement;
+
         removeTaskObj(mainElement.id);
-        console.log(testObjArr);
-        mainElement.remove()
-        
+        mainElement.remove();
     })
+
+    return;
+}
+
+let taskArr = (taskNum, tasks, data) => {
+    for (let i = 0; i < taskNum; i++) {
+        tasks[i] = data[`task_${i + 1}`].value;
+        console.log(testObjArr);
+    }
+
+    return;
+}
+
+let idGen = (objArr) => {
+    let lastObj = testObjArr.slice(-1);
+    
+    return lastObj[0].id + 1;
 }
 
 let newDomTask = (obj) => {
@@ -91,24 +104,32 @@ let newDomTask = (obj) => {
 
     testObjArr.push(newObj);        
     mainContBox(testObjArr.slice(-1));
+
+    return;
 }
 
 let formShow = () => {
     let formDisplay = document.querySelector(".form_wrap");
 
-    formDisplay.style.display = "flex";    
+    formDisplay.style.display = "flex";
+    
+    return;
 }
 
 let formHide = () => {
     let formDisplay = document.querySelector(".form_wrap");
 
-    formDisplay.style.display = "none";  
+    formDisplay.style.display = "none";
+
+    return;
 }
 
 let formRemove = () => {
     let form = document.querySelector(".form_box");
 
     form.remove();
+
+    return;
 }
 
 let removeTaskObj = (eleId) => {    
@@ -126,7 +147,7 @@ let swapImg = (element, imgOne, imgTwo) => {
         }
     }
 
-    element.addEventListener("click", swapImgFun);
+    return element.addEventListener("click", swapImgFun);
 }
 
 let switchClass = (element, classA, classB) => {
@@ -140,7 +161,7 @@ let switchClass = (element, classA, classB) => {
         }
     }
 
-    element.addEventListener("click", switchClass);
+    return element.addEventListener("click", switchClass);
 }
 
 
