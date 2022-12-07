@@ -1,4 +1,6 @@
 import { domGenModule, mainContBox } from "./index.js";
+import format from 'date-fns/format';
+import { split } from "lodash";
 
 let testObjArr = [{
     project_name: "Test Project",
@@ -15,7 +17,7 @@ let testObjArr = [{
 {
     project_name: "Test Project",
     date_entry: "11/09/2022",
-    time_entry: "7:30pm",
+    time_entry: "07:30",
     task_num: "2",
     tasks: {
         0: "Take the trash out test",
@@ -33,7 +35,7 @@ const taskFactory = (formData) => {
     let task_num = formData.task_num.value;
     let tasks = {};
     let prio = 0;    
-    let id = idGen(testObjArr)
+    let id = idGen(testObjArr);
 
     taskArr(task_num, tasks, formData)
 
@@ -65,6 +67,7 @@ let formController = () => {
         event.preventDefault();
 
         newDomTask(form);
+        console.log(testObjArr);
         
         formHide();
         formRemove();
@@ -87,14 +90,23 @@ let taskControl = (taskEle) => {
 let taskArr = (taskNum, tasks, data) => {
     for (let i = 0; i < taskNum; i++) {
         tasks[i] = data[`task_${i + 1}`].value;
-        console.log(testObjArr);
     }
 
     return;
 }
 
+// let dateToInt = (dateStr) => {
+//     let dateArr = split(dateStr, ":").join("")
+//     let newDate = parseInt(dateArr);
+//     console.log(newDate);
+
+//     return newDate;
+// }
+
+// console.log(format(dateToInt("12:45"), "HH:mmaaa"))
+
 let idGen = (objArr) => {
-    let lastObj = testObjArr.slice(-1);
+    let lastObj = objArr.slice(-1);
     
     return lastObj[0].id + 1;
 }
