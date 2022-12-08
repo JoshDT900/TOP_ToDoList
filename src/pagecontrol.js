@@ -1,11 +1,9 @@
 import { domGenModule, mainContBox } from "./index.js";
-import format from 'date-fns/format';
-import { split } from "lodash";
 
 let testObjArr = [{
     project_name: "Test Project",
-    date_entry: "11/09/2022",
-    time_entry: "7:30pm",
+    date_entry: "12/09/2022",
+    time_entry: "07:30",
     task_num: "2",
     tasks: {
         0: "Take the trash out test",
@@ -16,7 +14,7 @@ let testObjArr = [{
 },
 {
     project_name: "Test Project",
-    date_entry: "11/09/2022",
+    date_entry: "11/10/2022",
     time_entry: "07:30",
     task_num: "2",
     tasks: {
@@ -95,15 +93,23 @@ let taskArr = (taskNum, tasks, data) => {
     return;
 }
 
-// let dateToInt = (dateStr) => {
-//     let dateArr = split(dateStr, ":").join("")
-//     let newDate = parseInt(dateArr);
-//     console.log(newDate);
+let dateDiffInDays = (dateA, dateB) => {
+    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+    // Discard the time and time-zone information.
+    const utc1 = Date.UTC(dateA.getFullYear(), dateA.getMonth(), dateA.getDate());
+    const utc2 = Date.UTC(dateB.getFullYear(), dateB.getMonth(), dateB.getDate());
+  
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+}
 
-//     return newDate;
-// }
+let filterTasksDays = (objDate) => {
+    let today = new Date();
+    let compareDate = new Date(objDate);
 
-// console.log(format(dateToInt("12:45"), "HH:mmaaa"))
+    return dateDiffInDays(today, compareDate);
+}
+
+console.log(filterTasksDays(testObjArr[0].date_entry));
 
 let idGen = (objArr) => {
     let lastObj = objArr.slice(-1);
