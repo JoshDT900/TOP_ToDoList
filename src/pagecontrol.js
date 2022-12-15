@@ -2,7 +2,7 @@ import { domGenModule, mainContBox } from "./index.js";
 
 let testObjArr = [{
     project_name: "Test Project",
-    date_entry: "12/09/2022",
+    date_entry: "12/30/2022",
     time_entry: "07:30",
     task_num: "2",
     tasks: {
@@ -110,6 +110,15 @@ let filterTasksDays = (objDate) => {
 }
 
 console.log(filterTasksDays(testObjArr[0].date_entry));
+
+let showTasksByDate = (objArr) => {
+    let newArr = objArr.filter(obj => {
+        filterTasksDays(obj.date_entry) > 1;
+    });
+    console.log(newArr);
+}
+
+showTasksByDate(testObjArr)
 
 let idGen = (objArr) => {
     let lastObj = objArr.slice(-1);

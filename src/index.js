@@ -112,7 +112,7 @@ let sideNavBox = () => {
     let sideNav = document.querySelector(".side_nav");
 
     let navClassArr = ["today_item", "week_item", "month_item", "all_item"];
-    let navPText = ["Today's Projects", "This Week's Projects", "This Month's Projects", "All Projects"];
+    let navPText = ["Today's Projects", "Projects for the next 7 days", "Projects for the next 30 days", "All Projects"];
     let imgArr = [calendarTodayImg, calendarWeekImg, calendarMonthImg, calendarAllImg];
 
     for (let i in navClassArr) {
