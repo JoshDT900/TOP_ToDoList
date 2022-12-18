@@ -1,6 +1,6 @@
 import './style.css';
 import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, 
-         testObjArr, showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks  } from './pagecontrol.js';
+         testObjArr, showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks, clearTasks  } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -131,7 +131,8 @@ let sideNavBox = () => {
 
         newEle.addEventListener("click", () => {
             let eventFunc= eventArr[i];
-        
+            
+            clearTasks();
             mainContBox(eventFunc(testObjArr));
         })
 

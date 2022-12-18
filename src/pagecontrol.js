@@ -85,9 +85,12 @@ let taskControl = (taskEle) => {
     return;
 }
 
-// let sideNavEvents = (element, objArr) => {
-//     element.addEventListener("click", someFunction())
-// }
+let clearTasks = () => {
+    let taskBox = document.querySelector(".main_content")
+    taskBox.innerHTML = "";
+
+    return;
+}
 
 let taskArr = (taskNum, tasks, data) => {
     for (let i = 0; i < taskNum; i++) {
@@ -146,7 +149,7 @@ let idGen = (objArr) => {
     if (objArr.length === 0){
         return 0;
     }
-    
+
     let lastObj = objArr.slice(-1);
     
     return lastObj[0].id + 1;
@@ -220,4 +223,4 @@ let switchClass = (element, classA, classB) => {
 
 export { formController, swapImg, switchClass, formShow, formHide,
          formRemove, taskNum, taskControl, testObjArr, showTodaysTasks,  
-        showWeekTasks, showMonthTasks, showAllTasks };
+        showWeekTasks, showMonthTasks, showAllTasks, clearTasks };
