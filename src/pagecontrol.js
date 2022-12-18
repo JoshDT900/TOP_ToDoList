@@ -14,7 +14,7 @@ let testObjArr = [{
 },
 {
     project_name: "Test Project",
-    date_entry: "11/10/2022",
+    date_entry: "12/18/2022",
     time_entry: "07:30",
     task_num: "2",
     tasks: {
@@ -85,6 +85,10 @@ let taskControl = (taskEle) => {
     return;
 }
 
+// let sideNavEvents = (element, objArr) => {
+//     element.addEventListener("click", someFunction())
+// }
+
 let taskArr = (taskNum, tasks, data) => {
     for (let i = 0; i < taskNum; i++) {
         tasks[i] = data[`task_${i + 1}`].value;
@@ -109,18 +113,40 @@ let filterTasksDays = (objDate) => {
     return dateDiffInDays(today, compareDate);
 }
 
-console.log(filterTasksDays(testObjArr[0].date_entry));
+let showTodaysTasks = (objArr) => {
+    let newArr = [...objArr];
+    
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 1);
 
-let showTasksByDate = (objArr) => {
-    let newArr = objArr.filter(obj => {
-        filterTasksDays(obj.date_entry) > 1;
-    });
-    console.log(newArr);
+    return newArr;
 }
 
-showTasksByDate(testObjArr)
+let showWeekTasks = (objArr) => {
+    let newArr = [...objArr];
+    
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 7);
+
+    return newArr;
+}
+
+let showMonthTasks = (objArr) => {
+    let newArr = [...objArr];
+    
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 30);
+
+    return newArr;
+}
+
+let showAllTasks = (objArr) => {
+    return objArr
+}
+
 
 let idGen = (objArr) => {
+    if (objArr.length === 0){
+        return 0;
+    }
+    
     let lastObj = objArr.slice(-1);
     
     return lastObj[0].id + 1;
@@ -192,4 +218,6 @@ let switchClass = (element, classA, classB) => {
 }
 
 
-export { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, testObjArr };
+export { formController, swapImg, switchClass, formShow, formHide,
+         formRemove, taskNum, taskControl, testObjArr, showTodaysTasks,  
+        showWeekTasks, showMonthTasks, showAllTasks };

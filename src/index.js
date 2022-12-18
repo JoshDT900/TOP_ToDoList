@@ -1,5 +1,6 @@
 import './style.css';
-import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, testObjArr } from './pagecontrol.js';
+import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, 
+         testObjArr, showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks  } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -114,6 +115,7 @@ let sideNavBox = () => {
     let navClassArr = ["today_item", "week_item", "month_item", "all_item"];
     let navPText = ["Today's Projects", "Projects for the next 7 days", "Projects for the next 30 days", "All Projects"];
     let imgArr = [calendarTodayImg, calendarWeekImg, calendarMonthImg, calendarAllImg];
+    let eventArr = [showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks]
 
     for (let i in navClassArr) {
         let newEle = domGenModule.makeEle("div", ["class", navClassArr[i]]);
@@ -126,6 +128,12 @@ let sideNavBox = () => {
 
         let imgEle = domGenModule.makeEle("img", ["src", imgArr[i]]);
         sideNavEle.appendChild(imgEle);
+
+        newEle.addEventListener("click", () => {
+            let eventFunc= eventArr[i];
+        
+            mainContBox(eventFunc(testObjArr));
+        })
 
         sideNav.appendChild(newEle);
     }
