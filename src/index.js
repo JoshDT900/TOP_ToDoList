@@ -1,6 +1,6 @@
 import './style.css';
 import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, 
-         testObjArr, showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks, clearTasks  } from './pagecontrol.js';
+         testObjArr, showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks, clearTasks, formatDate  } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -252,7 +252,7 @@ let mainContBox = (arr) => {
         todoBody.appendChild(todoBodyList);
         todoItem.appendChild(todoBody);
 
-        let timeEle = domGenModule.makeEle("div", ["class", "todo_time"], obj.time_entry);
+        let timeEle = domGenModule.makeEle("div", ["class", "todo_time"], formatDate(obj));
         todoItem.appendChild(timeEle);
 
         let taskBtnBoxEle = domGenModule.makeEle("div", ["class", "todo_btns"]);

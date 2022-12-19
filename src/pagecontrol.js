@@ -1,9 +1,10 @@
+import { format } from "date-fns";
 import { domGenModule, mainContBox } from "./index.js";
 
 let testObjArr = [{
-    project_name: "Test Project",
-    date_entry: "12/30/2022",
-    time_entry: "07:30",
+    project_name: "Test Project One",
+    date_entry: "2022-12-30",
+    time_entry: "17:30",
     task_num: "2",
     tasks: {
         0: "Take the trash out test",
@@ -13,8 +14,8 @@ let testObjArr = [{
     id: 0
 },
 {
-    project_name: "Test Project",
-    date_entry: "12/18/2022",
+    project_name: "Test Project Two",
+    date_entry: "2022-12-18",
     time_entry: "07:30",
     task_num: "2",
     tasks: {
@@ -65,7 +66,6 @@ let formController = () => {
         event.preventDefault();
 
         newDomTask(form);
-        console.log(testObjArr);
         
         formHide();
         formRemove();
@@ -108,6 +108,19 @@ let dateDiffInDays = (dateA, dateB) => {
   
     return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
+
+let formatDate = (obj) => {
+    let dateArr = obj.date_entry.split("-").reverse();
+    dateArr.push(obj.time_entry.split(":"))
+    console.log(dateArr);
+
+    let formatedDate = format(new Date(dateArr[2], parseInt(dateArr[1]) - 1, dateArr[0], parseFloat(dateArr[3][0]), parseFloat(dateArr[3][1])), "MMM dd yyyy - p")
+    console.log(formatedDate);
+
+    return formatedDate;
+}
+
+formatDate(testObjArr[0])
 
 let filterTasksDays = (objDate) => {
     let today = new Date();
@@ -223,4 +236,4 @@ let switchClass = (element, classA, classB) => {
 
 export { formController, swapImg, switchClass, formShow, formHide,
          formRemove, taskNum, taskControl, testObjArr, showTodaysTasks,  
-        showWeekTasks, showMonthTasks, showAllTasks, clearTasks };
+        showWeekTasks, showMonthTasks, showAllTasks, clearTasks, formatDate };
