@@ -120,8 +120,6 @@ let formatDate = (obj) => {
     return formatedDate;
 }
 
-formatDate(testObjArr[0])
-
 let filterTasksDays = (objDate) => {
     let today = new Date();
     let compareDate = new Date(objDate);
@@ -132,7 +130,7 @@ let filterTasksDays = (objDate) => {
 let showTodaysTasks = (objArr) => {
     let newArr = [...objArr];
     
-    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 1);
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 1 && filterTasksDays(obj.date_entry) >= 0);
 
     return newArr;
 }
@@ -140,7 +138,7 @@ let showTodaysTasks = (objArr) => {
 let showWeekTasks = (objArr) => {
     let newArr = [...objArr];
     
-    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 7);
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 7 && filterTasksDays(obj.date_entry) >= 0);
 
     return newArr;
 }
@@ -148,7 +146,7 @@ let showWeekTasks = (objArr) => {
 let showMonthTasks = (objArr) => {
     let newArr = [...objArr];
     
-    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 30);
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 30 && filterTasksDays(obj.date_entry) >= 0);
 
     return newArr;
 }

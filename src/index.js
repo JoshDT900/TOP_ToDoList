@@ -286,7 +286,7 @@ let mainContBox = (arr) => {
     profileBox();
     sideNavBox();
 
-    mainContBox(testObjArr);
+    showTodaysTasks(testObjArr);
 })();
 
 
