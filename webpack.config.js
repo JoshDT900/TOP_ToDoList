@@ -6,6 +6,9 @@ module.exports = {
   entry: {
     index: './src/index.js',
     pagecontrol: './src/pagecontrol.js',
+    object_functions: './src/objectfuncs.js',
+    dataobj: './src/datafile.js',
+    displayfuncs: './src/displayfuncs.js'
   },
   devtool: 'inline-source-map',
   devServer: {

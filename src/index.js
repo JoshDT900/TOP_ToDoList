@@ -1,9 +1,11 @@
 import './style.css';
-import { formController, swapImg, switchClass, formShow, formHide, formRemove, taskNum, taskControl, 
-         testObjArr, showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks, clearTasks, formatDate  } from './pagecontrol.js';
+import { formController, switchClass, taskNum, taskControl, dataObjArr,  formatDate } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
+import { swapImg, formRemove, formHide, formShow, showAllTasks, showMonthTasks, showWeekTasks, showTodaysTasks,
+         clearTasks } from './displayfuncs.js';
+import { loadData } from './datafile';
 
 
 const domGenModule = (function() {
@@ -133,7 +135,7 @@ let sideNavBox = () => {
             let eventFunc= eventArr[i];
             
             clearTasks();
-            mainContBox(eventFunc(testObjArr));
+            mainContBox(eventFunc(dataObjArr));
         })
 
         sideNav.appendChild(newEle);
@@ -286,9 +288,10 @@ let mainContBox = (arr) => {
     profileBox();
     sideNavBox();
 
-    showTodaysTasks(testObjArr);
+    loadData(localStorage)
+    mainContBox(showTodaysTasks(dataObjArr));    ;
 })();
 
 
-export { domGenModule, testObjArr, mainContBox }
+export { domGenModule, dataObjArr, mainContBox }
 
