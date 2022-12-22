@@ -27,6 +27,14 @@ let testObjArr = [{
 }
 ]
 
+let saveProjLoc = (objArr) => {    
+    return localStorage.setItem("projects", JSON.stringify(objArr));
+}
+
+saveProjLoc(testObjArr)
+console.log(localStorage.projects);
+console.log(JSON.parse(localStorage.projects));
+
 const taskFactory = (formData) => {
     let project_name = formData.project_name.value;
     let date_entry = formData.date_entry.value;
@@ -36,9 +44,9 @@ const taskFactory = (formData) => {
     let prio = 0;    
     let id = idGen(testObjArr);
 
-    taskArr(task_num, tasks, formData)
+    taskArr(task_num, tasks, formData);
 
-    return { project_name, date_entry, time_entry, task_num, tasks, prio, id }
+    return { project_name, date_entry, time_entry, task_num, tasks, prio, id };
 }
 
 let taskNum = () => {
@@ -86,10 +94,9 @@ let taskControl = (taskEle) => {
 }
 
 let clearTasks = () => {
-    let taskBox = document.querySelector(".main_content")
-    taskBox.innerHTML = "";
-
-    return;
+    let taskBox = document.querySelector(".main_content");
+    
+    return taskBox.innerHTML = "";
 }
 
 let taskArr = (taskNum, tasks, data) => {
@@ -111,11 +118,9 @@ let dateDiffInDays = (dateA, dateB) => {
 
 let formatDate = (obj) => {
     let dateArr = obj.date_entry.split("-").reverse();
-    dateArr.push(obj.time_entry.split(":"))
-    console.log(dateArr);
+    dateArr.push(obj.time_entry.split(":"));    
 
-    let formatedDate = format(new Date(dateArr[2], parseInt(dateArr[1]) - 1, dateArr[0], parseFloat(dateArr[3][0]), parseFloat(dateArr[3][1])), "MMM dd yyyy - p")
-    console.log(formatedDate);
+    let formatedDate = format(new Date(dateArr[2], parseInt(dateArr[1]) - 1, dateArr[0], parseFloat(dateArr[3][0]), parseFloat(dateArr[3][1])), "MMM dd yyyy - p");
 
     return formatedDate;
 }
