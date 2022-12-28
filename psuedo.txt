@@ -1,0 +1,20 @@
+Features to add
+
+Mark tasks as completed 
+Edit Tasks 
+Change ordering of tasks based on time remaining 
+Add which projects are being displayed as a header 
+
+Mark Tasks Psuedo
+    click on completed 
+    task goes from false to true
+    icon is changed
+
+Edit Taks Psuedo 
+    click on edit task 
+    task data gets put into a new form based on matching IDs
+    changes are made
+    submit exchanges object based on IDs
+    new data is saved to localStorage 
+    tasks are redrawn
+

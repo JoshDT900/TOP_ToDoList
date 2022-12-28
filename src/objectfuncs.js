@@ -8,10 +8,11 @@ const taskFactory = (formData) => {
     let tasks = {};
     let prio = 0;    
     let id = idGen(dataObjArr);
+    let complete = false;    
 
     taskArr(task_num, tasks, formData);
 
-    return { project_name, date_entry, time_entry, task_num, tasks, prio, id };
+    return { project_name, date_entry, time_entry, task_num, tasks, prio, id, complete, action };
 }
 
 let taskArr = (taskNum, tasks, data) => {

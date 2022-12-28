@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { domGenModule, mainContBox } from "./index.js";
+import { domGenModule, mainContBox, formBox } from "./index.js";
 import { taskFactory } from "./objectfuncs.js";
 import { dataObjArr, saveProjLoc } from "./datafile.js";
 import { formHide, formRemove } from "./displayfuncs.js";
@@ -89,5 +89,12 @@ let switchClass = (element, classA, classB) => {
     return element.addEventListener("click", switchClass);
 }
 
+let editTask = (obj, taskId) => {
+    formBox()
 
-export { formController, switchClass, taskNum, taskControl, dataObjArr, formatDate };
+    let form = document.querySelector(".add_task_form");
+    console.log(form.childNodes);
+}
+
+
+export { formController, switchClass, taskNum, taskControl, dataObjArr, formatDate, editTask };

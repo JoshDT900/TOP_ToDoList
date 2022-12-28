@@ -1,5 +1,5 @@
 import './style.css';
-import { formController, switchClass, taskNum, taskControl, dataObjArr,  formatDate } from './pagecontrol.js';
+import { formController, switchClass, taskNum, taskControl, dataObjArr,  formatDate, editTask } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
          delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
@@ -269,6 +269,9 @@ let mainContBox = (arr) => {
 
             if (btnClassArr[i] === "todo_delete") {
                 taskControl(newBtn)
+            } else if (btnClassArr[i] === "todo_edit") {
+                newBtn.addEventListener("click", editTask)
+                btnImgEle.setAttribute("task_id", obj.id)
             }
 
             swapImg(btnImgEle, completedTaskImg, completedTaskImgFilled)
@@ -292,6 +295,5 @@ let mainContBox = (arr) => {
     mainContBox(showTodaysTasks(dataObjArr));    ;
 })();
 
-
-export { domGenModule, dataObjArr, mainContBox }
+export { domGenModule, dataObjArr, mainContBox, formBox }
 

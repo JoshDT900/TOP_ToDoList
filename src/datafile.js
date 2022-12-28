@@ -14,4 +14,5 @@ let saveProjLoc = (objArr) => {
     return localStorage.setItem("projects", JSON.stringify(objArr));
 }
 
+
 export { dataObjArr, saveProjLoc, loadData } 
