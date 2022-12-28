@@ -2,7 +2,7 @@ import './style.css';
 import { formController, switchClass, taskNum, taskControl, dataObjArr,  formatDate, editTask } from './pagecontrol.js';
 import { headerImgFile, profileImageFile, projBtnImageFile, calendarAllImg,
          calendarMonthImg, calendarTodayImg, calendarWeekImg, gitLogoImg,
-         delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js'
+         delTaskImg, completedTaskImg, editTaskImg, completedTaskImgFilled } from './images.js';
 import { swapImg, formRemove, formHide, formShow, showAllTasks, showMonthTasks, showWeekTasks, showTodaysTasks,
          clearTasks } from './displayfuncs.js';
 import { loadData } from './datafile';
@@ -99,8 +99,8 @@ let profileBox = () => {
     let projBtnDiv = domGenModule.makeEle("div", "Add a new project");
     projBtnEle.appendChild(projBtnDiv);
     
-    projBtnEle.addEventListener("click", formShow)
-    projBtnEle.addEventListener("click", formBox)
+    projBtnEle.addEventListener("click", formShow);
+    projBtnEle.addEventListener("click", formBox);
 
     let projBtnImg = domGenModule.makeEle("img", [["src", projBtnImageFile], ["alt", "add note icon"]]);
     projBtnEle.appendChild(projBtnImg);
@@ -117,7 +117,7 @@ let sideNavBox = () => {
     let navClassArr = ["today_item", "week_item", "month_item", "all_item"];
     let navPText = ["Today's Projects", "Projects for the next 7 days", "Projects for the next 30 days", "All Projects"];
     let imgArr = [calendarTodayImg, calendarWeekImg, calendarMonthImg, calendarAllImg];
-    let eventArr = [showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks]
+    let eventArr = [showTodaysTasks, showWeekTasks, showMonthTasks, showAllTasks];
 
     for (let i in navClassArr) {
         let newEle = domGenModule.makeEle("div", ["class", navClassArr[i]]);
@@ -157,19 +157,19 @@ let sideNavBox = () => {
 }
 
 let formBox = () => {
-    let formWrap = document.querySelector(".form_wrap")
+    let formWrap = document.querySelector(".form_wrap");
 
-    let formBoxEle = domGenModule.makeEle("div", ["class", "form_box"])
-    let formEle = domGenModule.makeEle("form", [["class", "add_task_form"],["action", " "],["method", "post"]])    
+    let formBoxEle = domGenModule.makeEle("div", ["class", "form_box"]);
+    let formEle = domGenModule.makeEle("form", [["class", "add_task_form"],["action", " "],["method", "post"]]); 
     
-    let formEleClassArr = ["proj_name_box", "date_box", "time_box", "task_num_box", "task_box", "submit_box"]
+    let formEleClassArr = ["proj_name_box", "date_box", "time_box", "task_num_box", "task_box", "submit_box"];
 
     for (let i = 0; i < formEleClassArr.length; i++) {
-        let newEle = domGenModule.makeEle("div", ["class", formEleClassArr[i]])
+        let newEle = domGenModule.makeEle("div", ["class", formEleClassArr[i]]);
         
 
         if (formEleClassArr[i] === "proj_name_box"){
-            let labelEle = domGenModule.makeEle("label", ["for", "project_name"], "Project Name *")
+            let labelEle = domGenModule.makeEle("label", ["for", "project_name"], "Project Name *");
             let inpEle = domGenModule.makeEle("input", [["type", "text"], ["id", "project_name"], ["name", "project_name"],
              ["placeholder", "My New Project"], ["minlength", "4"], ["maxlength", "30"],["required", ""]]);
 
@@ -177,52 +177,52 @@ let formBox = () => {
             newEle.appendChild(inpEle);
                                                         
         } else if (formEleClassArr[i] === "date_box") {
-            let labelEle = domGenModule.makeEle("label", ["for", "date_entry"], "Date *")
-            let inpEle = domGenModule.makeEle("input", [["type", "date"], ["name", "date_entry"], ["id", "date_entry"], ["required", ""]])
+            let labelEle = domGenModule.makeEle("label", ["for", "date_entry"], "Date *");
+            let inpEle = domGenModule.makeEle("input", [["type", "date"], ["name", "date_entry"], ["id", "date_entry"], ["required", ""]]);
 
-            newEle.appendChild(labelEle)
-            newEle.appendChild(inpEle)
+            newEle.appendChild(labelEle);
+            newEle.appendChild(inpEle);
         } else if (formEleClassArr[i] === "time_box") {
             let labelEle = domGenModule.makeEle("label", ["for", "time_entry"], "Time *")
-            let inpEle = domGenModule.makeEle("input", [["type", "time"], ["name", "time_entry"], ["id", "time_entry"], ["required", ""]])
+            let inpEle = domGenModule.makeEle("input", [["type", "time"], ["name", "time_entry"], ["id", "time_entry"], ["required", ""]]);
 
-            newEle.appendChild(labelEle)
-            newEle.appendChild(inpEle)
+            newEle.appendChild(labelEle);
+            newEle.appendChild(inpEle);
         } else if (formEleClassArr[i] === "task_num_box") {
-            let labelEle = domGenModule.makeEle("label", ["for", "task_num"], "Number of tasks *")
-            let inpEle = domGenModule.makeEle("input", [["type", "number"], ["name", "task_num"], ["id", "task_num"], ["min", "1"], ["max", "10"], ["value", "1"]])
-            let btnEle = domGenModule.makeEle("button", ["type", "button"], "Confirm")
+            let labelEle = domGenModule.makeEle("label", ["for", "task_num"], "Number of tasks *");
+            let inpEle = domGenModule.makeEle("input", [["type", "number"], ["name", "task_num"], ["id", "task_num"], ["min", "1"], ["max", "10"], ["value", "1"]]);
+            let btnEle = domGenModule.makeEle("button", ["type", "button"], "Confirm");
 
-            btnEle.addEventListener("click", taskNum)
+            btnEle.addEventListener("click", taskNum);
 
-            newEle.appendChild(labelEle)
-            newEle.appendChild(inpEle)
-            newEle.appendChild(btnEle)
+            newEle.appendChild(labelEle);
+            newEle.appendChild(inpEle);
+            newEle.appendChild(btnEle);
         } else if (formEleClassArr[i] === "submit_box") {
-            let subBtnEle = domGenModule.makeEle("button", ["type", "submit"], "Add Project")
-            let cancelBtnEle = domGenModule.makeEle("button", ["type", "button"], "Cancel")
+            let subBtnEle = domGenModule.makeEle("button", [["type", "submit"], ["class", "submitBtn"]], "Add Project");
+            let cancelBtnEle = domGenModule.makeEle("button", [["type", "button"], ["class", "cancelBtn"]], "Cancel");
 
             subBtnEle.addEventListener("click", formController)
             cancelBtnEle.addEventListener("click", () => {
-                formHide()
-                formRemove()
+                formHide();
+                formRemove();
             })
 
-            newEle.appendChild(subBtnEle)
-            newEle.appendChild(cancelBtnEle)
+            newEle.appendChild(subBtnEle);
+            newEle.appendChild(cancelBtnEle);
         } else if (formEleClassArr[i] === "task_box") {
             let newTaskLabel = domGenModule.makeEle("label", `Task 1`)
             let newTaskInput = domGenModule.makeEle("input", [["type", "text"], ["name", `task_1`], ["id", `task_1`], ["required", ""]])
 
-            newEle.appendChild(newTaskLabel)
-            newEle.appendChild(newTaskInput)
+            newEle.appendChild(newTaskLabel);
+            newEle.appendChild(newTaskInput);
         }
         
-        formEle.appendChild(newEle)
+        formEle.appendChild(newEle);
     }
 
-    formBoxEle.appendChild(formEle)
-    formWrap.appendChild(formBoxEle)
+    formBoxEle.appendChild(formEle);
+    formWrap.appendChild(formBoxEle);
 
     return formBoxEle;
 }
@@ -235,7 +235,7 @@ let mainContBox = (arr) => {
         let todoItem = domGenModule.makeEle("div", [["class", "todo_item"], ["id", `${obj.id}`]]);
         mainContEle.appendChild(todoItem);
 
-        switchClass(todoItem, "todo_item", "todo_item_full")
+        switchClass(todoItem, "todo_item", "todo_item_full");
         
         let taskEle = domGenModule.makeEle("div", [["class", "todo_task"]], obj.project_name);
         todoItem.appendChild(taskEle);
@@ -268,13 +268,13 @@ let mainContBox = (arr) => {
             let btnImgEle = domGenModule.makeEle("img", [["src", btnImgArr[i]], ["alt", btnImgAlt[i]], ["class", `task_image${i}`]]);
 
             if (btnClassArr[i] === "todo_delete") {
-                taskControl(newBtn)
+                taskControl(newBtn);
             } else if (btnClassArr[i] === "todo_edit") {
-                newBtn.addEventListener("click", editTask)
-                btnImgEle.setAttribute("task_id", obj.id)
+                newBtn.addEventListener("click", () => {editTask(dataObjArr, obj.id)});
+                btnImgEle.setAttribute("task_id", obj.id);
             }
 
-            swapImg(btnImgEle, completedTaskImg, completedTaskImgFilled)
+            swapImg(btnImgEle, completedTaskImg, completedTaskImgFilled);
 
             newBtn.appendChild(btnImgEle);
             taskBtnBoxEle.appendChild(newBtn);
@@ -291,9 +291,9 @@ let mainContBox = (arr) => {
     profileBox();
     sideNavBox();
 
-    loadData(localStorage)
+    loadData(localStorage);
     mainContBox(showTodaysTasks(dataObjArr));    ;
 })();
 
-export { domGenModule, dataObjArr, mainContBox, formBox }
+export { domGenModule, dataObjArr, mainContBox, formBox };
 

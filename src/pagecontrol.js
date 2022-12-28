@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { domGenModule, mainContBox, formBox } from "./index.js";
 import { taskFactory } from "./objectfuncs.js";
 import { dataObjArr, saveProjLoc } from "./datafile.js";
-import { formHide, formRemove } from "./displayfuncs.js";
+import { formHide, formRemove, formShow } from "./displayfuncs.js";
 
 let taskNum = () => {
     let taskBox = document.querySelector(".task_box");
@@ -90,10 +90,24 @@ let switchClass = (element, classA, classB) => {
 }
 
 let editTask = (obj, taskId) => {
-    formBox()
+    formBox();
+    formShow();
+
+    let submitBtn = document.querySelector(".submitBtn");
+    submitBtn.innerHTML = "Save";
 
     let form = document.querySelector(".add_task_form");
-    console.log(form.childNodes);
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        newDomTask(form);
+        
+        // formHide();
+        // formRemove();
+    });    
+
+    return;    
 }
 
 
