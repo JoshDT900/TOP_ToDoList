@@ -90,22 +90,22 @@ let switchClass = (element, classA, classB) => {
 }
 
 let editTask = (obj, taskId) => {
-    formBox();
-    formShow();
+    // formBox();
+    // formShow();
 
-    let submitBtn = document.querySelector(".submitBtn");
-    submitBtn.innerHTML = "Save";
+    // let submitBtn = document.querySelector(".submitBtn");
+    // submitBtn.innerHTML = "Save";
 
-    let form = document.querySelector(".add_task_form");
+    // let form = document.querySelector(".add_task_form");
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
+    // form.addEventListener("submit", (event) => {
+    //     event.preventDefault();
 
-        newDomTask(form);
+    //     newDomTask(form);
         
         // formHide();
         // formRemove();
-    });    
+    // });    
 
     return;    
 }

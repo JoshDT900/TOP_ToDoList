@@ -12,7 +12,7 @@ const taskFactory = (formData) => {
 
     taskArr(task_num, tasks, formData);
 
-    return { project_name, date_entry, time_entry, task_num, tasks, prio, id, complete, action };
+    return { project_name, date_entry, time_entry, task_num, tasks, prio, id, complete };
 }
 
 let taskArr = (taskNum, tasks, data) => {

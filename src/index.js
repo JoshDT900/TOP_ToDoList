@@ -132,7 +132,7 @@ let sideNavBox = () => {
         sideNavEle.appendChild(imgEle);
 
         newEle.addEventListener("click", () => {
-            let eventFunc= eventArr[i];
+            let eventFunc = eventArr[i];
             
             clearTasks();
             mainContBox(eventFunc(dataObjArr));

@@ -15,17 +15,17 @@ let dateDiffInDays = (dateA, dateB) => {
     return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
 
-let filterTasksDays = (objDate) => {
+let filterTasksDays = (objDate, objTime) => {
     let today = new Date();
-    let compareDate = new Date(objDate);
+    let compareDate = new Date(`${objDate} ${objTime}`);
 
     return dateDiffInDays(today, compareDate);
 }
 
 let showTodaysTasks = (objArr) => {
     let newArr = [...objArr];
-    
-    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 1 && filterTasksDays(obj.date_entry) >= 0);
+
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry, obj.time_entry) < 1 && filterTasksDays(obj.date_entry, obj.time_entry) == 0);
 
     return newArr;
 }
@@ -33,7 +33,8 @@ let showTodaysTasks = (objArr) => {
 let showWeekTasks = (objArr) => {
     let newArr = [...objArr];
     
-    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 7 && filterTasksDays(obj.date_entry) >= 0);
+    
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry, obj.time_entry) >= 0 && filterTasksDays(obj.date_entry, obj.time_entry) < 7);
 
     return newArr;
 }
@@ -41,7 +42,7 @@ let showWeekTasks = (objArr) => {
 let showMonthTasks = (objArr) => {
     let newArr = [...objArr];
     
-    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry) < 30 && filterTasksDays(obj.date_entry) >= 0);
+    newArr = newArr.filter(obj => filterTasksDays(obj.date_entry, obj.time_entry) < 30 && filterTasksDays(obj.date_entry, obj.time_entry) >= 0);
 
     return newArr;
 }
