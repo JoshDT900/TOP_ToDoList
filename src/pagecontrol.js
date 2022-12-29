@@ -90,22 +90,28 @@ let switchClass = (element, classA, classB) => {
 }
 
 let editTask = (obj, taskId) => {
-    // formBox();
-    // formShow();
+    formBox();
+    formShow();
+    
 
-    // let submitBtn = document.querySelector(".submitBtn");
-    // submitBtn.innerHTML = "Save";
+    let submitBtn = document.querySelector(".submitBtn");
+    submitBtn.innerHTML = "Save";
 
-    // let form = document.querySelector(".add_task_form");
+    let form = document.querySelector(".add_task_form");
+    
+    let holdObj = obj.filter(obj => obj.id === taskId);    
 
-    // form.addEventListener("submit", (event) => {
-    //     event.preventDefault();
+    let projName = document.querySelector("#project_name");
+    projName.value = holdObj[0].project_name;    
 
-    //     newDomTask(form);
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        newDomTask(form);
         
-        // formHide();
-        // formRemove();
-    // });    
+        formHide();
+        formRemove();
+    });    
 
     return;    
 }
