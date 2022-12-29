@@ -64,13 +64,13 @@ let newDomTask = (obj) => {
     mainContBox(dataObjArr.slice(-1));
     saveProjLoc(dataObjArr)
 
-    console.log(JSON.parse(localStorage.projects));
-
     return;
 }
 
 let removeTaskObj = (eleId) => {
+    console.log(eleId);
     let newObjArr = dataObjArr.filter(test => test.id != eleId);
+    console.log("item removed");
 
     return saveProjLoc(newObjArr); 
 }

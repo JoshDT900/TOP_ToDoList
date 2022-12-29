@@ -291,7 +291,7 @@ let mainContBox = (arr) => {
     profileBox();
     sideNavBox();
 
-    loadData(localStorage);
+    loadData(localStorage.getItem(`projects`));
     mainContBox(showTodaysTasks(dataObjArr));    ;
 })();
 

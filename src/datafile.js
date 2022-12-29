@@ -1,17 +1,18 @@
 let dataObjArr = []
 
-let loadData = (locStor) => {
-    if (!locStor.projects) {
-        return dataObjArr = [];
-    } else {
-        return dataObjArr = JSON.parse(locStor.projects);
-    }
+let loadData = (locStor) => {   
+    return dataObjArr = JSON.parse(locStor);
 }
 
 let saveProjLoc = (objArr) => {
     localStorage.clear("projects");
     
-    return localStorage.setItem("projects", JSON.stringify(objArr));
+    localStorage.setItem("projects", JSON.stringify(objArr));
+
+    // Refreshes session data with new local storage
+    loadData(localStorage.getItem(`projects`))
+   
+    return;
 }
 
 
