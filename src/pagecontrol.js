@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { domGenModule, mainContBox, formBox } from "./index.js";
 import { taskFactory } from "./objectfuncs.js";
 import { dataObjArr, saveProjLoc } from "./datafile.js";
-import { formHide, formRemove, formShow } from "./displayfuncs.js";
+import { formHide, formRemove, formShow, clearTasks } from "./displayfuncs.js";
 
 let taskNum = () => {
     let taskBox = document.querySelector(".task_box");
@@ -23,15 +23,16 @@ let taskNum = () => {
 }
 
 let formController = () => {
-    let form = document.querySelector(".add_task_form");
+    let formVals = document.querySelector(".add_task_form");
+    let formDisplay = document.querySelector(".form_box")
 
-    form.addEventListener("submit", (event) => {
+    formVals.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        newDomTask(form);
+        newDomTask(formVals);
         
         formHide();
-        formRemove();
+        formRemove(formDisplay);
     });
 
     return;
@@ -90,30 +91,41 @@ let switchClass = (element, classA, classB) => {
 }
 
 let editTask = (obj, taskId) => {
+    let newObj = [...obj]
+    let objId = taskId;
+
     formBox();
-    formShow();
-    
+    formShow();    
 
     let submitBtn = document.querySelector(".submitBtn");
     submitBtn.innerHTML = "Save";
-
-    let form = document.querySelector(".add_task_form");
     
-    let holdObj = obj.filter(obj => obj.id === taskId);    
+    let filterObj = obj.filter(obj => obj.id === objId);    
 
     let projName = document.querySelector("#project_name");
-    projName.value = holdObj[0].project_name;    
+    projName.value = filterObj[0].project_name;
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
+    let projDate = document.querySelector("#date_entry");
+    projDate.value = filterObj[0].date_entry;
 
-        newDomTask(form);
-        
-        formHide();
-        formRemove();
-    });    
+    let projTime = document.querySelector("#time_entry");
+    projTime.value = filterObj[0].time_entry;
+
+    console.log(obj);
+    replaceTask(newObj, objId)
 
     return;    
+}
+
+let replaceTask = (obj, id) => {
+    let newObj = [...obj];
+    let objId = id;
+
+    newObj.map(obj => dataObjArr.find(obj2 => obj2.id === objId) || obj)
+    console.log(newObj);
+    // clearTasks();
+
+    return;
 }
 
 

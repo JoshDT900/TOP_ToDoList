@@ -67,12 +67,10 @@ let formHide = () => {
     return;
 }
 
-let formRemove = () => {
-    let form = document.querySelector(".form_box");
+let formRemove = (form) => {
+    // let form = document.querySelector(".form_box");    
 
-    form.remove();
-
-    return;
+    return form.remove();
 }
 
 let swapImg = (element, imgOne, imgTwo) => {

@@ -202,10 +202,10 @@ let formBox = () => {
             let subBtnEle = domGenModule.makeEle("button", [["type", "submit"], ["class", "submitBtn"]], "Add Project");
             let cancelBtnEle = domGenModule.makeEle("button", [["type", "button"], ["class", "cancelBtn"]], "Cancel");
 
-            subBtnEle.addEventListener("click", formController)
+            // subBtnEle.addEventListener("click", formController)
             cancelBtnEle.addEventListener("click", () => {
                 formHide();
-                formRemove();
+                formRemove(formBoxEle);
             })
 
             newEle.appendChild(subBtnEle);
@@ -223,6 +223,7 @@ let formBox = () => {
 
     formBoxEle.appendChild(formEle);
     formWrap.appendChild(formBoxEle);
+    formController();
 
     return formBoxEle;
 }
