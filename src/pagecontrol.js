@@ -26,14 +26,16 @@ let formController = () => {
     let formVals = document.querySelector(".add_task_form");
     let formDisplay = document.querySelector(".form_box")
 
-    formVals.addEventListener("submit", (event) => {
-        event.preventDefault();
-
+    if (document.querySelector(".submitBtn").innerHTML === "Add Project"){
         newDomTask(formVals);
-        
         formHide();
         formRemove(formDisplay);
-    });
+        return;
+    } else if (document.querySelector(".submitBtn").innerHTML === "Save"){
+        formHide();
+        formRemove(formDisplay);
+        return;
+    }
 
     return;
 }
@@ -91,16 +93,19 @@ let switchClass = (element, classA, classB) => {
 }
 
 let editTask = (obj, taskId) => {
-    let newObj = [...obj]
-    let objId = taskId;
+    let newObj = [...obj]    
+    let objId = taskId;    
 
     formBox();
     formShow();    
 
     let submitBtn = document.querySelector(".submitBtn");
     submitBtn.innerHTML = "Save";
+
+    let form = document.querySelector(".form_box");
+    let formVals = document.querySelector(".add_task_form");
     
-    let filterObj = obj.filter(obj => obj.id === objId);    
+    let filterObj = newObj.filter(obj => obj.id === objId);
 
     let projName = document.querySelector("#project_name");
     projName.value = filterObj[0].project_name;
@@ -111,19 +116,23 @@ let editTask = (obj, taskId) => {
     let projTime = document.querySelector("#time_entry");
     projTime.value = filterObj[0].time_entry;
 
-    console.log(obj);
-    replaceTask(newObj, objId)
+    form.addEventListener("submit", () => {
+        replaceTask(objId);
+        newDomTask(formVals);
+    })
+    console.log(filterObj);
+    
 
     return;    
 }
 
-let replaceTask = (obj, id) => {
-    let newObj = [...obj];
-    let objId = id;
+let replaceTask = (id) => {
+    let newObjArr = dataObjArr.filter(obj => id !== obj.id)
 
-    newObj.map(obj => dataObjArr.find(obj2 => obj2.id === objId) || obj)
-    console.log(newObj);
-    // clearTasks();
+    clearTasks();
+    
+    mainContBox(newObjArr);
+    saveProjLoc(newObjArr);
 
     return;
 }

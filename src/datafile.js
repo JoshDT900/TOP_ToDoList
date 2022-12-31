@@ -1,7 +1,11 @@
 let dataObjArr = []
 
-let loadData = (locStor) => {   
-    return dataObjArr = JSON.parse(locStor);
+let loadData = (locStor) => {
+    if (locStor === null){
+        return dataObjArr = [];
+    } else {
+        return dataObjArr = JSON.parse(locStor);
+    }    
 }
 
 let saveProjLoc = (objArr) => {

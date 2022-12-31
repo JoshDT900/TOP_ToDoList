@@ -161,12 +161,16 @@ let formBox = () => {
 
     let formBoxEle = domGenModule.makeEle("div", ["class", "form_box"]);
     let formEle = domGenModule.makeEle("form", [["class", "add_task_form"],["action", " "],["method", "post"]]); 
-    
+
+    formBoxEle.addEventListener("submit", (event) => {
+        event.preventDefault();
+        formController();
+    });
+
     let formEleClassArr = ["proj_name_box", "date_box", "time_box", "task_num_box", "task_box", "submit_box"];
 
     for (let i = 0; i < formEleClassArr.length; i++) {
-        let newEle = domGenModule.makeEle("div", ["class", formEleClassArr[i]]);
-        
+        let newEle = domGenModule.makeEle("div", ["class", formEleClassArr[i]]);        
 
         if (formEleClassArr[i] === "proj_name_box"){
             let labelEle = domGenModule.makeEle("label", ["for", "project_name"], "Project Name *");
@@ -202,7 +206,6 @@ let formBox = () => {
             let subBtnEle = domGenModule.makeEle("button", [["type", "submit"], ["class", "submitBtn"]], "Add Project");
             let cancelBtnEle = domGenModule.makeEle("button", [["type", "button"], ["class", "cancelBtn"]], "Cancel");
 
-            // subBtnEle.addEventListener("click", formController)
             cancelBtnEle.addEventListener("click", () => {
                 formHide();
                 formRemove(formBoxEle);
@@ -223,7 +226,6 @@ let formBox = () => {
 
     formBoxEle.appendChild(formEle);
     formWrap.appendChild(formBoxEle);
-    formController();
 
     return formBoxEle;
 }
@@ -293,7 +295,7 @@ let mainContBox = (arr) => {
     sideNavBox();
 
     loadData(localStorage.getItem(`projects`));
-    mainContBox(showTodaysTasks(dataObjArr));    ;
+    mainContBox(showTodaysTasks(dataObjArr));
 })();
 
 export { domGenModule, dataObjArr, mainContBox, formBox };
